@@ -1,0 +1,56 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
+#    Updated: 2023/05/06 17:44:49 by aankote          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = cub3D
+
+FILES = cub3d.c events.c mini_map/draw.c movements/move.c \
+		read_map.c
+
+OBJCS = $(FILES:.c=.o)
+
+INCLUDES = get_next_line/get_next_line.a libft/libft.a
+FRAMEWORK = -lmlx -framework OpenGL -framework AppKit -static-libsan -fsanitize=address
+
+CFLAGS = -Wall -Wextra -Werror
+
+CC = cc
+
+all : $(NAME)
+
+$(NAME) : $(OBJCS)
+	@echo "\n"
+	@make -C libft
+	@make -C get_next_line
+	@echo "\033[0;32mCompiling cub3D..."
+	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME) $(INCLUDES)
+
+clean :
+	@echo "\033[0;31mCleaning libft..."
+	@make clean -C libft/
+	@make clean -C get_next_line/
+	@echo "\nRemoving binaries..."
+	rm -fr $(OBJCS)
+
+fclean : clean
+	@make fclean -C libft/
+	@make fclean -C get_next_line/
+	@echo "\nDeleting objects..."
+	@echo "\nDeleting executable..."
+	rm -fr $(NAME)
+
+re : fclean all
+
+push : fclean
+	git add .
+	git commit -m "UPDATED"
+	git push
+	
