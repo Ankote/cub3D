@@ -6,14 +6,14 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/05/06 17:44:49 by aankote          ###   ########.fr        #
+#    Updated: 2023/05/07 18:41:25 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-FILES = cub3d.c events.c mini_map/draw.c movements/move.c \
-		read_map.c
+FILES = cub3d.c events.c movements/move.c \
+		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c
 
 OBJCS = $(FILES:.c=.o)
 
