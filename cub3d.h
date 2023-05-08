@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/07 18:45:43 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/08 08:05:46 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-}	t_mlxk;
+}	c;
 
 typedef struct	s_img {
 	void	*img;
@@ -50,10 +50,9 @@ typedef struct s_data
 	int px_pos;
 	int py_pos;
 	char **map;
-	t_mlxk win;
+	t_win win;
 	t_img img;
 }	t_data;
-
 
 int				ft_exit(void *key);
 int				ft_key_hook(int key, t_data *data);

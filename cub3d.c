@@ -6,13 +6,13 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:39:40 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/07 18:45:58 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/08 08:05:46 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int create_window(t_mlxk *win)
+int create_window(t_win *win)
 {
     win->mlx = mlx_init();
     win->mlx_win = mlx_new_window(win->mlx, WIN_X,
@@ -30,7 +30,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 int main(int ac ,char **av)
 {
-	t_mlxk window;
+	t_win window;
 	t_data *data;
 	int fd;
 	ac = 00;
