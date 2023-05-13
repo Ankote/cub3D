@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:32:52 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/07 18:31:04 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/13 08:28:46 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,35 @@
 
  int move_up(t_data *data)
 {
-    if(data->py_pos > 3)
+    int x;
+    int y;
+    
+    data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+	x = data->player.px_pos + cos(data->player.routation_ang) * data->player.movestep + 6;
+	y = data->player.py_pos + sin(data->player.routation_ang) * data->player.movestep + 6;
+    if(data->map[y / CARE][x / CARE] != '1')
     {
-        data->py_pos -= 3;
-        initializ(data);
+        data->player.walk_dir = 1; 
+        update_walk(data);
     }
+   
+    // }
     return (0);
 }
 
 int move_down(t_data *data)
 {
-    if(data->py_pos < MAP_Y - 10)
+    int x;
+    int y;
+    
+    data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+	x = data->player.px_pos + cos(data->player.routation_ang) * data->player.movestep + 6;
+	y = data->player.py_pos  + sin(data->player.routation_ang) * data->player.movestep + 6;
+    if(data->map[y / CARE][x / CARE] != '1')
     {
-        data->py_pos += 3;
-        initializ(data);
+        data->player.walk_dir = -1;
+        data->player.py_pos += 1;
+        update_walk(data);
     }
     
     return (0);
@@ -35,9 +50,18 @@ int move_down(t_data *data)
 
 int move_left(t_data *data)
 {
-    if(data->px_pos > 3)
+    int x;
+    int y;
+    
+    data->player.walk_dir = -1;
+    data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+	x = data->player.px_pos + cos(data->player.routation_ang + rad(90)) * data->player.movestep + P_SIZE;
+	y = data->player.py_pos  + sin(data->player.routation_ang + rad(90))  * data->player.movestep + P_SIZE;
+    if(data->map[y / CARE][x / CARE] != '1')
     {
-        data->px_pos -= 3;
+        data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+        data->player.px_pos += cos(data->player.routation_ang + rad(90)) * data->player.movestep  ;
+	    data->player.py_pos += sin(data->player.routation_ang + rad(90))  * data->player.movestep ;
         initializ(data);
     }
     return (0);
@@ -45,10 +69,20 @@ int move_left(t_data *data)
 
 int move_right(t_data *data)
 {
-    if(data->px_pos < MAP_X - 10)
+    int x;
+    int y;
+    
+    data->player.walk_dir = 1;
+    data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+	x = data->player.px_pos + cos(data->player.routation_ang + rad(90)) * data->player.movestep + P_SIZE;
+	y = data->player.py_pos  + sin(data->player.routation_ang + rad(90))  * data->player.movestep + P_SIZE;
+    if(data->map[y / CARE][x / CARE] != '1')
     {
-        data->px_pos += 3;
+        data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+        data->player.px_pos += cos(data->player.routation_ang + rad(90)) * data->player.movestep;
+	    data->player.py_pos += sin(data->player.routation_ang + rad(90))  * data->player.movestep;
         initializ(data);
     }
+  
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/08 08:05:46 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/13 08:11:05 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,33 @@
 # include <unistd.h>
  #include <fcntl.h>
 
-# define WIN_Y 640
 # define WIN_X 1000
-# define CARE 32
+# define WIN_Y 640
+# define CARE 16
+# define P_SIZE 6
 # define MAP_X 320
 # define MAP_Y 224
+
+/********************COLORS*****************/
 # define WAY 0x00CDB82F
 # define PLAYER 0x00CAF5FA
 # define LINE 0x00AFAD9D
-
+# define WALL 0x00330019
+# define WALL 0x00330019
+# define SKY 0x00C4F6FC
+# define FLOOR 0x0093FFBE
+# define RED 0x00FF0000
+/**********MATH****************************/
+# define PI 3.14159265359
+# define MOVE_SPEED 5
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-}	c;
+	int 	map_x;
+	int		map_y;
+}	t_win;
 
 typedef struct	s_img {
 	void	*img;
@@ -43,16 +55,28 @@ typedef struct	s_img {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
-
-typedef struct s_data
+}
+			t_img;
+typedef struct  s_player
 {
 	int px_pos;
 	int py_pos;
+	int walk_dir; 
+	int turn_dir;
+	int rot_dir;
+	double movestep;
+	double routation_ang;
+	
+} t_player;
+
+typedef struct s_data
+{
 	char **map;
 	t_win win;
 	t_img img;
+	t_player player;
 }	t_data;
+
 
 int				ft_exit(void *key);
 int				ft_key_hook(int key, t_data *data);
@@ -73,6 +97,15 @@ char	**split_map(int fd);
 
 /*****************Draw msp***************/
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-void create_map(t_data *data);
-int initializ(t_data *data);
+void	create_map(t_data *data);
+int		initializ(t_data *data);
+void	get_dimensions(t_data *data);
+void get_player_pos(t_data *data);
+int is_player(int c);
+int create_window(t_win *win, t_data *data);
+void draw_win();void draw_sky(t_img *img);
+ void draw_rays(t_data *data);
+ double rad(double deg);
+int update_turn(t_data *data);
+int update_walk(t_data *data);
 # endif

@@ -6,19 +6,20 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/05/07 18:41:25 by aankote          ###   ########.fr        #
+#    Updated: 2023/05/09 15:38:04 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 FILES = cub3d.c events.c movements/move.c \
-		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c
+		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c \
+		mini_map/draw_rays.c window/main_window.c
 
 OBJCS = $(FILES:.c=.o)
 
 INCLUDES = get_next_line/get_next_line.a libft/libft.a
-FRAMEWORK = -lmlx -framework OpenGL -framework AppKit -static-libsan -fsanitize=address
+FRAMEWORK = -lmlx -framework OpenGL -framework AppKit -static-libsan -fsanitize=address -g3
 
 CFLAGS = -Wall -Wextra -Werror
 

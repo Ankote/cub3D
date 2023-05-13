@@ -6,19 +6,12 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:39:40 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/08 08:05:46 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/13 08:12:23 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int create_window(t_win *win)
-{
-    win->mlx = mlx_init();
-    win->mlx_win = mlx_new_window(win->mlx, WIN_X,
-			WIN_Y, "SAIYANS cub3D");
-    return (0);
-}
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
@@ -35,11 +28,15 @@ int main(int ac ,char **av)
 	int fd;
 	ac = 00;
 	
+	data = (t_data *)malloc(sizeof(t_data));
 	fd = open(av[1], O_RDONLY, 0777);
 	data->map = split_map(fd);
-	data = (t_data *)malloc(sizeof(t_data));
-	create_window(&window);
-	data->win = window;
+	create_window(&window, data);
+	get_dimensions(data); 
+	data->player.routation_ang = rad(360);
+	data->player.turn_dir = 0;
+	data->player.walk_dir = 0;
+	draw_win(data);
 	create_map(data);
 	mlx_hook(data->win.mlx_win, 17, 0, &ft_exit, NULL);
     mlx_hook(window.mlx_win, 2, 0, ft_key_hook, data);
