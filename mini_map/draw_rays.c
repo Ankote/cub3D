@@ -14,7 +14,7 @@
  
 
 
- void line_ray(t_data *data, double x, double y)
+ void line_ray(t_data *data, double x, double y, int color)
  {
     double steps;
     double xinc;
@@ -46,5 +46,5 @@
     x = cos(data->player.routation_ang) * 20 + data->player.px_pos;
     y = sin(data->player.routation_ang) * 20 + data->player.py_pos;
     
-    line_ray(data, x, y );
+    line_ray(data, x, y, GREEN);
  }
