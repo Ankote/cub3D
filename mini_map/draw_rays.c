@@ -14,35 +14,37 @@
  
 
 
- void line_ray(t_data *data, double x0, double y0, double dx, double dy)
+ void line_ray(t_data *data, double x, double y)
  {
     double steps;
-    double i;
     double xinc;
     double yinc;
+    int i;
 
     i = 0;
-    steps = fabs(dx);
-    if(fabs(dy) > fabs(dx))
-        steps = fabs(dy);
-    xinc = dx / steps;
-    yinc = dy / steps;
+    steps = fabs(x - data->player.px_pos + 3);
+    if(fabs(x - data->player.py_pos + 3) > fabs(x - data->player.px_pos + 3))
+        steps = fabs(x - data->player.py_pos + 3);
+    xinc = (x - data->player.px_pos + 3) / steps;
+    yinc = (y - data->player.py_pos + 3) / steps;
+    x =  data->player.px_pos + 3;
+    y = data->player.py_pos + 3;
     while(i < steps)
     {
-        my_mlx_pixel_put(&data->img, x0, y0, RED);
-        x0 += xinc;
-        y0 += yinc;
+        my_mlx_pixel_put(&data->img, x, y, RED);
+        x += xinc;
+        y += yinc;
         i ++;
     }
  }
  
  void draw_rays(t_data *data)
  {
-    double dx;
-    double dy;
+    double x;
+    double y;
     
-    dx = cos(data->player.routation_ang) * 20;
-    dy = sin(data->player.routation_ang) * 20;
+    x = cos(data->player.routation_ang) * 20 + data->player.px_pos;
+    y = sin(data->player.routation_ang) * 20 + data->player.py_pos;
     
-    line_ray(data, data->player.px_pos + 3, data->player.py_pos + 3, dx, dy );
+    line_ray(data, x, y );
  }
