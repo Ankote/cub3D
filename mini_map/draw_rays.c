@@ -62,17 +62,19 @@
     if(sin(data->player.routation_ang) <= 0)
         check_down = 1;
     yintercept = floor((data->player.py_pos) / CARE) * CARE;
+    by = yintercept - CARE;
     if(!check_down)
     {
         yintercept += CARE ;
         by = yintercept + CARE;
     }
-    else
-        by = yintercept - CARE;
     check_left = 0; 
     if(cos(data->player.routation_ang) <= 0)
         check_left = 1;
-    xintercept = data->player.px_pos + fabs(yintercept  - data->player.py_pos) / tan(data->player.routation_ang);
-    bx = fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
+    xintercept = data->player.px_pos + (yintercept  - data->player.py_pos) / tan(data->player.routation_ang);
+    if(!check_left)
+        bx = fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
+    else
+        bx = -fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
     line_ray(data, bx , by, GREEN);    
  }
