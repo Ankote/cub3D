@@ -50,6 +50,8 @@ fclean : clean
 
 re : fclean all
 
+run : all clean
+
 push : fclean
 	git add .
 	git commit -m "UPDATED"

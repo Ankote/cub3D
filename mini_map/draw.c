@@ -32,9 +32,12 @@ int update_turn(t_data *data)
 int initializ(t_data *data)
 {
     draw_map(data);
-    // draw_lines(data);
+    draw_lines(data);
     draw_player(data, data->player.px_pos, data->player.py_pos);
 	draw_rays(data);
+	draw_p_dir(data);
+	if(data->player.routation_ang >= 3 * PI || data->player.routation_ang <= -3 * PI)
+		data->player.routation_ang = PI;
 	mlx_put_image_to_window(data->win.mlx, data->win.mlx_win, data->img.img, 0, 0);
     return (0);
 }

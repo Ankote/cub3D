@@ -23,7 +23,7 @@
 
 # define WIN_X 1000
 # define WIN_Y 640
-# define CARE 16
+# define CARE 32
 # define P_SIZE 6
 # define MAP_X 320
 # define MAP_Y 224
@@ -37,6 +37,7 @@
 # define SKY 0x00C4F6FC
 # define FLOOR 0x0093FFBE
 # define RED 0x00FF0000
+# define GREEN 0x0000CA44
 /**********MATH****************************/
 # define PI 3.14159265359
 # define MOVE_SPEED 5
@@ -59,14 +60,14 @@ typedef struct	s_img {
 			t_img;
 typedef struct  s_player
 {
-	int px_pos;
-	int py_pos;
-	int walk_dir; 
-	int turn_dir;
-	int rot_dir;
+	double px_pos;
+	double py_pos;
+	double walk_dir; 
+	double turn_dir;
+	double rot_dir;
 	double movestep;
 	double routation_ang;
-	
+	double ray_angle;
 } t_player;
 
 typedef struct s_data
@@ -108,4 +109,5 @@ void draw_win();void draw_sky(t_img *img);
  double rad(double deg);
 int update_turn(t_data *data);
 int update_walk(t_data *data);
+ void draw_p_dir(t_data *data);
 # endif
