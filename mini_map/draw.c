@@ -25,6 +25,7 @@ int update_walk(t_data *data)
 int update_turn(t_data *data)
 {
 	data->player.routation_ang += MOVE_SPEED * rad(data->player.turn_dir);
+	data->player.ray_angle = data->player.routation_ang - rad(30);
 	initializ(data);
 	return (0);
 }

@@ -105,9 +105,10 @@ void get_player_pos(t_data *data);
 int is_player(int c);
 int create_window(t_win *win, t_data *data);
 void draw_win();void draw_sky(t_img *img);
- void draw_rays(t_data *data);
+ void draw_ray(t_data *data);
  double rad(double deg);
 int update_turn(t_data *data);
 int update_walk(t_data *data);
  void draw_p_dir(t_data *data);
+  void draw_rays(t_data *data);
 # endif

@@ -34,6 +34,7 @@ int main(int ac ,char **av)
 	create_window(&window, data);
 	get_dimensions(data); 
 	data->player.routation_ang =  3 * PI / 2;
+	data->player.ray_angle = data->player.routation_ang - rad(30);
 	data->player.turn_dir = 0;
 	data->player.walk_dir = 0;
 	draw_win(data);

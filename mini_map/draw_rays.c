@@ -48,7 +48,7 @@
     line_ray(data, x, y, RED);
  }
 
- void   draw_rays(t_data *data)
+ void   draw_ray(t_data *data)
  {
     double yintercept;  
     double xintercept;        
@@ -56,10 +56,14 @@
     int check_left;
     double bx;
     double by;
+    double xsteps;
+
+    int x;
+    int y;
     // int check_right;
 
     check_down = 0;
-    if(sin(data->player.routation_ang) <= 0)
+    if(sin(data->player.ray_angle) <= 0)
         check_down = 1;
     yintercept = floor((data->player.py_pos) / CARE) * CARE;
     by = yintercept - CARE;
@@ -69,12 +73,51 @@
         by = yintercept + CARE;
     }
     check_left = 0; 
-    if(cos(data->player.routation_ang) <= 0)
+    if(cos(data->player.ray_angle) <= 0)
         check_left = 1;
-    xintercept = data->player.px_pos + (yintercept  - data->player.py_pos) / tan(data->player.routation_ang);
+    xintercept = data->player.px_pos + (yintercept  - data->player.py_pos) / tan(data->player.ray_angle);
     if(!check_left)
-        bx = fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
+        bx = fabs(CARE / tan(data->player.ray_angle)) +  xintercept;
     else
-        bx = -fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
+        bx = -fabs(CARE / tan(data->player.ray_angle)) +  xintercept;
+    xsteps = bx - xintercept;
+    while(1)
+    {
+        x = xintercept / CARE;
+        y = yintercept / CARE;
+        if(data->map[y - 1][x] == '1')
+        {
+            line_ray(data, xintercept , yintercept, GREEN);
+            return;
+        }
+           
+        /*******************/
+        x = bx / CARE;
+        y = by / CARE;
+        if(data->map[y - 1][x] == '1')
+        {
+            line_ray(data, bx , by, GREEN);
+            return;
+        }
+        bx += xsteps;
+        by -= CARE;
+        x = bx / CARE;
+        y = by / CARE;
+        if(data->map[y - 1][x] == '1')
+        {
+            line_ray(data, bx , by, GREEN);
+            return;
+        }
+    }
     line_ray(data, bx , by, GREEN);    
+ }
+
+ void draw_rays(t_data *data)
+ {
+    data->player.ray_angle = data->player.routation_ang - rad(30);
+    while(data->player.ray_angle <= data->player.routation_ang + rad(30))
+    {
+        draw_ray(data);
+        data->player.ray_angle += rad(60)/ data->win.map_y;
+    }
  }
