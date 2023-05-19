@@ -73,5 +73,5 @@
         check_left = 1;
     xintercept = data->player.px_pos + (yintercept  - data->player.py_pos) / tan(data->player.routation_ang);
     bx = fabs(CARE / tan(data->player.routation_ang)) +  xintercept;
-    line_ray(data, bx , by, GREEN);    
+    line_ray(data, xintercept , yintercept, GREEN);    
  }
