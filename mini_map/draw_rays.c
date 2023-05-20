@@ -48,68 +48,153 @@
     line_ray(data, x, y, RED);
  }
 
- void   draw_ray(t_data *data)
- {
-    double yintercept;  
-    double xintercept;        
+void get_intercepts(t_data *data)
+{
+
     int check_down;
     int check_left;
-    double bx;
-    double by;
-    double xsteps;
-
-    int x;
-    int y;
-    // int check_right;
-
+    
     check_down = 0;
     if(sin(data->player.ray_angle) <= 0)
         check_down = 1;
-    yintercept = floor((data->player.py_pos) / CARE) * CARE;
-    by = yintercept - CARE;
+    data->cords.yintercept = floor((data->player.py_pos) / CARE) * CARE;
     if(!check_down)
-    {
-        yintercept += CARE ;
-        by = yintercept + CARE;
-    }
+        data->cords.yintercept += CARE ;
     check_left = 0; 
     if(cos(data->player.ray_angle) <= 0)
         check_left = 1;
-    xintercept = data->player.px_pos + (yintercept  - data->player.py_pos) / tan(data->player.ray_angle);
+    data->cords.xintercept = data->player.px_pos + (data->cords.yintercept  - data->player.py_pos) / tan(data->player.ray_angle);
+}
+
+
+
+void get_second_hor_cord(t_data *data)
+{
+    int check_down;
+    int check_left;
+    int x;
+    int y;
+
+    get_intercepts(data);
+    check_down = 0;
+    if(sin(data->player.ray_angle) <= 0)
+        check_down = 1;
+    data->cords.yb = data->cords.yintercept - CARE;
+    if(!check_down)
+        data->cords.yb = data->cords.yintercept + CARE;
+    check_left = 0; 
+    if(cos(data->player.ray_angle) <= 0)
+        check_left = 1;
+    data->cords.xintercept = data->player.px_pos + (data->cords.yintercept  - data->player.py_pos) / tan(data->player.ray_angle);
     if(!check_left)
-        bx = fabs(CARE / tan(data->player.ray_angle)) +  xintercept;
+        data->cords.xb = fabs(CARE / tan(data->player.ray_angle)) +  data->cords.xintercept;
     else
-        bx = -fabs(CARE / tan(data->player.ray_angle)) +  xintercept;
-    xsteps = bx - xintercept;
+        data->cords.xb = -fabs(CARE / tan(data->player.ray_angle)) +  data->cords.xintercept;
+    
+    x = data->cords.xintercept / CARE;
+    y = data->cords.yintercept / CARE;
+    if(data->map[y - 1][x] == '1')
+    {
+        data->cords.xb = data->cords.xintercept;
+        data->cords.yb = data->cords.yintercept;
+    }
+}
+
+// void   draw_ray(t_data *data)
+//  {   
+//     int check_down;
+//     int check_left;
+//     double bx;
+//     double by;
+//     double xsteps;
+
+//     int x;
+//     int y;
+//     check_down = 0;
+//     if(sin(data->player.ray_angle) <= 0)
+//         check_down = 1;
+//     data->cords.yintercept = floor((data->player.py_pos) / CARE) * CARE;
+//     by = data->cords.yintercept - CARE;
+//     if(!check_down)
+//     {
+//         data->cords.yintercept += CARE ;
+//         by = data->cords.yintercept + CARE;
+//     }
+//     check_left = 0; 
+//     if(cos(data->player.ray_angle) <= 0)
+//         check_left = 1;
+//     data->cords.xintercept = data->player.px_pos + (data->cords.yintercept  - data->player.py_pos) / tan(data->player.ray_angle);
+//     if(!check_left)
+//         bx = fabs(CARE / tan(data->player.ray_angle)) +  data->cords.xintercept;
+//     else
+//         bx = -fabs(CARE / tan(data->player.ray_angle)) +  data->cords.xintercept;
+//     xsteps = bx - data->cords.xintercept;
+//     while(1)
+//     {
+//         x = data->cords.xintercept / CARE;
+//         y = data->cords.yintercept / CARE;
+//         if(data->map[y - 1][x] == '1')
+//         {
+//             line_ray(data, data->cords.xintercept , data->cords.yintercept, GREEN);
+//             return;
+//         }
+           
+//         /*******************/
+//         x = bx / CARE;
+//         y = by / CARE;
+//         if(data->map[y - 1][x] == '1')
+//         {
+//             line_ray(data, bx , by, GREEN);
+//             return;
+//         }
+//         /******************************/
+//         bx += xsteps;
+//         by -= CARE;
+//         x = bx / CARE;
+//         y = by / CARE;
+//         if(data->map[y - 1][x] == '1')
+//         {
+//             line_ray(data, bx , by, GREEN);
+//             return;
+//         }
+//     }
+//     line_ray(data, bx , by, GREEN);    
+//  }
+
+
+void   draw_ray(t_data *data)
+ {   
+    int x;
+    int y;
+
+    get_second_hor_cord(data);
+    data->cords.xsteps =  data->cords.xb - data->cords.xintercept;
     while(1)
     {
-        x = xintercept / CARE;
-        y = yintercept / CARE;
+        // x = data->cords.xintercept / CARE;
+        // y = data->cords.yintercept / CARE;
+        // if(data->map[y - 1][x] == '1')
+        // {
+        //     line_ray(data, data->cords.xintercept , data->cords.yintercept, GREEN);
+        //     return;
+        // }
+        x = data->cords.xb / CARE;
+        y = data->cords.yb / CARE;
         if(data->map[y - 1][x] == '1')
         {
-            line_ray(data, xintercept , yintercept, GREEN);
+            line_ray(data, data->cords.xb , data->cords.yb, GREEN);
             return;
         }
-           
-        /*******************/
-        x = bx / CARE;
-        y = by / CARE;
+        data->cords.xb += data->cords.xsteps;
+        data->cords.yb -= CARE;
+        x = data->cords.xb / CARE;
+        y = data->cords.yb / CARE;
         if(data->map[y - 1][x] == '1')
         {
-            line_ray(data, bx , by, GREEN);
+            line_ray(data, data->cords.xb , data->cords.yb, GREEN);
             return;
         }
-        bx += xsteps;
-        by -= CARE;
-        x = bx / CARE;
-        y = by / CARE;
-        if(data->map[y - 1][x] == '1')
-        {
-            line_ray(data, bx , by, GREEN);
-            return;
-        }
-    }
-    line_ray(data, bx , by, GREEN);    
+    }   
  }
 
  void draw_rays(t_data *data)

@@ -23,8 +23,8 @@
 
 # define WIN_X 1000
 # define WIN_Y 640
-# define CARE 32
-# define P_SIZE 6
+# define CARE 16
+# define P_SIZE 4
 # define MAP_X 320
 # define MAP_Y 224
 
@@ -70,12 +70,22 @@ typedef struct  s_player
 	double ray_angle;
 } t_player;
 
+typedef struct s_cords
+{
+	double xintercept;
+	double yintercept;
+	double xb;
+	double yb;
+	double xsteps;
+} t_cord;
+
 typedef struct s_data
 {
 	char **map;
 	t_win win;
 	t_img img;
 	t_player player;
+	t_cord cords;
 }	t_data;
 
 
