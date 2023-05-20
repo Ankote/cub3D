@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/20 11:28:36 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/20 13:58:54 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void get_intercepts(t_data *data)
 {
 
     int check_down;
-    int check_left;
     
     check_down = 0;
     if(sin(data->player.ray_angle) <= 0)
@@ -24,9 +23,6 @@ void get_intercepts(t_data *data)
     data->cords.yinterc_hor = floor((data->player.py_pos) / CARE) * CARE;
     if(!check_down)
         data->cords.yinterc_hor += CARE ;
-    check_left = 0; 
-    if(cos(data->player.ray_angle) <= 0)
-        check_left = 1;
     data->cords.xinterc_hor = data->player.px_pos + (data->cords.yinterc_hor  - data->player.py_pos) / tan(data->player.ray_angle);
 }
 
