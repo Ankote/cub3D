@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/13 08:11:05 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/20 11:27:53 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_X 1000
 # define WIN_Y 640
 # define CARE 16
-# define P_SIZE 4
+# define P_SIZE 6
 # define MAP_X 320
 # define MAP_Y 224
 
@@ -72,8 +72,10 @@ typedef struct  s_player
 
 typedef struct s_cords
 {
-	double xintercept;
-	double yintercept;
+	double xinterc_hor;
+	double yinterc_hor;
+	double xinterc_ver;
+	double yinterc_ver;
 	double xb;
 	double yb;
 	double xsteps;
@@ -115,10 +117,13 @@ void get_player_pos(t_data *data);
 int is_player(int c);
 int create_window(t_win *win, t_data *data);
 void draw_win();void draw_sky(t_img *img);
- void draw_ray(t_data *data);
+ void draw_ray(t_data *data, double x, double y, int color);
  double rad(double deg);
 int update_turn(t_data *data);
 int update_walk(t_data *data);
  void draw_p_dir(t_data *data);
   void draw_rays(t_data *data);
+
+  /*******************/
+void get_intercepts_ver(t_data *data);
 # endif
