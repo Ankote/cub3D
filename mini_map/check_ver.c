@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/20 17:01:35 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/20 18:14:49 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void get_intercepts_ver(t_data *data)
         printf("fuck2\n");
         data->cords.yinterc_ver = data->player.py_pos + fabs(tan(data->player.routation_ang) * (data->cords.xinterc_ver - data->player.px_pos));
     }
-        
     draw_ray(data, data->cords.xinterc_ver,  data->cords.yinterc_ver, GREEN);                                                                                                                          
 }
 
