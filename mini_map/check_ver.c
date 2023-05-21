@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/21 11:02:23 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/21 11:54:37 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void get_second_ver_cord(t_data *data)
         data->cords.xb_ver = data->cords.xinterc_ver;
         data->cords.yb_ver = data->cords.yinterc_ver;
     }
+    draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);
 }
-
 
 void   hit_ver_wall(t_data *data)
  {   

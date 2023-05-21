@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/21 11:14:38 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/21 11:46:08 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,12 @@ void   hit_hor_wall(t_data *data)
  void draw_rays(t_data *data)
  {
     // data->player.ray_angle = data->player.routation_ang - rad(30);
-    while(data->player.ray_angle <= data->player.routation_ang + rad(30))
-    {
-        hit_hor_wall(data);
-        data->player.ray_angle += rad(60)/ data->win.map_y;
-    }
+    // while(data->player.ray_angle <= data->player.routation_ang + rad(30))
+    // {
+    //     hit_ver_wall(data);
+    //     data->player.ray_angle += rad(60)/ data->win.map_y;
+    // }
+     get_second_ver_cord(data);
     //  get_intercepts_ver(data);
     
  }
