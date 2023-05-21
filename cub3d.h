@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/20 11:27:53 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/21 10:59:08 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ typedef struct s_cords
 	double yinterc_hor;
 	double xinterc_ver;
 	double yinterc_ver;
-	double xb;
-	double yb;
-	double xsteps;
+	double xb_hor;
+	double yb_hor;
+	double xb_ver;
+	double yb_ver;
+	double xsteps_hor;
+	double ysteps_ver;
 } t_cord;
 
 typedef struct s_data
@@ -123,7 +126,9 @@ int update_turn(t_data *data);
 int update_walk(t_data *data);
  void draw_p_dir(t_data *data);
   void draw_rays(t_data *data);
+  void get_second_ver_cord(t_data *data);
 
   /*******************/
+  void   hit_ver_wall(t_data *data);
 void get_intercepts_ver(t_data *data);
 # endif
