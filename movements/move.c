@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:32:52 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/13 08:31:01 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/21 14:04:22 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int move_down(t_data *data)
         data->player.py_pos += 1;
         update_walk(data);
     }
-    
     return (0);
 }
 

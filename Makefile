@@ -6,7 +6,7 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/05/20 10:48:56 by aankote          ###   ########.fr        #
+#    Updated: 2023/05/21 15:12:05 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 
 FILES = cub3d.c events.c movements/move.c \
 		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c mini_map/draw_utils02.c \
-		mini_map/check_hor.c mini_map/check_ver.c window/main_window.c
+		mini_map/check_hor.c mini_map/check_ver.c mini_map/check_intersictions.c window/main_window.c
 
 OBJCS = $(FILES:.c=.o)
 
