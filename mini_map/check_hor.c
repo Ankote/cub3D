@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/23 15:25:57 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:44:38 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int get_second_hor_cord(t_data *data)
 
     if(get_intercepts(data))
     {
-        draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
+        // draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
         return (1);
     }
     check_down = 0;
@@ -75,43 +75,38 @@ int get_second_hor_cord(t_data *data)
     if(data->cords.xb_hor >= data->win.map_x)
         data->cords.xb_hor = data->win.map_x - CARE;
     if(data->cords.xb_hor <= 0)
-        data->cords.xb_hor = 0;
+        data->cords.xb_hor = CARE;
     if(!check_hit_hor(data->map, data->cords.xb_hor, data->cords.yb_hor))
-    {
-        // draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
         return (1);
-    }
     return(0);
 }
 
 int   hit_hor_wall(t_data *data)
  {   
-    int x;
-    int y;
     int y_step;
 
     if(get_second_hor_cord(data))
     {
-          draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
+        // draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
         return(1);
     }
     data->cords.xsteps_hor =  data->cords.xb_hor - data->cords.xinterc_hor;
     y_step = CARE;
     if(sin(data->player.ray_angle <= 0))
-         y_step = -CARE ;
+         y_step = - CARE ;
     while(1)
     {
         if(data->cords.xb_hor >= data->win.map_x)
             data->cords.xb_hor = data->win.map_x - CARE;
         if(data->cords.xb_hor <= 0)
-            data->cords.xb_hor = 0;
-        x = data->cords.xb_hor / CARE;
-        y = data->cords.yb_hor / CARE;
+            data->cords.xb_hor = CARE;
         if(!check_hit_hor(data->map, data->cords.xb_hor, data->cords.yb_hor))
+        {
+            // draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
             return (1);
+        }
         data->cords.xb_hor += data->cords.xsteps_hor;
         data->cords.yb_hor += y_step;  
-            draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
     }
  }
 
@@ -120,7 +115,10 @@ int   hit_hor_wall(t_data *data)
     data->player.ray_angle = data->player.routation_ang - rad(30);
     while(data->player.ray_angle <= data->player.routation_ang + rad(30))
     {
+        // get_second_hor_cord(data);
         hit_hor_wall(data);
+        draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, RED);
+        printf("'%f\n'", data->player.routation_ang);
         data->player.ray_angle += rad(60)/ data->win.map_y;
     }
  }

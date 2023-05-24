@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:39:40 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/22 18:38:48 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:42:56 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int main(int ac ,char **av)
 	data->map = split_map(fd);
 	create_window(&window, data);
 	get_dimensions(data); 
-	data->player.routation_ang = PI / 2;
-	data->player.ray_angle = data->player.routation_ang;
+	data->player.routation_ang = rad(270);
 	data->player.turn_dir = 0;
 	data->player.walk_dir = 0;
 	draw_win(data);
