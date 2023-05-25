@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:40:42 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/11 10:07:34 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/24 11:15:44 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,9 @@ void get_player_pos(t_data *data)
 double rad(double deg)
 {
 	return (deg * PI / 180);
+}
+
+double deg(double rad)
+{
+	return (rad * 180  / PI);
 }

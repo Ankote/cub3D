@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/23 20:42:27 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:08:13 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int update_walk(t_data *data)
 int update_turn(t_data *data)
 {
 	data->player.routation_ang += MOVE_SPEED * rad(data->player.turn_dir);
-	data->player.ray_angle = data->player.routation_ang - rad(30);
 	initializ(data);
 	return (0);
 }
+
 void    angle_adjust(double *ray_angle){
     *ray_angle = fmod(*ray_angle , (2 * PI));
     if(*ray_angle < 0)
@@ -37,12 +37,7 @@ void    angle_adjust(double *ray_angle){
 
 int initializ(t_data *data)
 {
-	if(data->player.routation_ang >= 3 * PI || data->player.routation_ang <= -3 * PI)
-	{
-		printf("tfoooo\n");
-		data->player.routation_ang = PI;
-	}
-	// angle_adjust(&data->player.routation_ang);
+	angle_adjust(&data->player.routation_ang);
     draw_map(data);
     draw_lines(data);
     draw_player(data, data->player.px_pos, data->player.py_pos);

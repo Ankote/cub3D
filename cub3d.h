@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/23 18:15:31 by aankote          ###   ########.fr       */
+/*   Updated: 2023/05/24 11:15:53 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int update_walk(t_data *data);
 void draw_p_dir(t_data *data);
 void draw_rays(t_data *data);
 int get_second_ver_cord(t_data *data);
-
+double deg(double rad);
   /*******************/
 int   hit_ver_wall(t_data *data);
 int   hit_hor_wall(t_data *data);
