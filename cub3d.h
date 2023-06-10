@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 11:15:40 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 16:24:23 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void draw_win();void draw_sky(t_img *img);
  double rad(double deg);
 int update_turn(t_data *data);
 int update_walk(t_data *data);
+int update_walk_rl(t_data *data);
 void draw_p_dir(t_data *data);
 void draw_rays(t_data *data);
 int get_second_ver_cord(t_data *data);

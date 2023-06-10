@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 11:19:40 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 16:46:20 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void check_intersictions(t_data *data)
     data->cords.hor_dy = data->cords.yb_hor - data->player.py_pos;
     data->cords.ver_dx = data->cords.xb_ver - data->player.px_pos;
     data->cords.ver_dy = data->cords.yb_ver - data->player.py_pos;
-    hor_line = (pow(data->cords.hor_dx, 2) + pow(data->cords.hor_dy, 2));
-    ver_line = (pow(data->cords.ver_dx, 2) + pow(data->cords.ver_dy, 2));
+    hor_line = sqrt(pow(data->cords.hor_dx, 2) + pow(data->cords.hor_dy, 2));
+    ver_line = sqrt(pow(data->cords.ver_dx, 2) + pow(data->cords.ver_dy, 2));
 
     if(hor_line <= ver_line)
     {
@@ -38,7 +38,6 @@ void check_intersictions(t_data *data)
         x = data->cords.xb_ver;
         y = data->cords.yb_ver;
     }
-    printf("%f %f\n", x, y);
     draw_ray(data, x , y, RED);
 }
 
@@ -55,7 +54,7 @@ void draw_rays(t_data *data)
     {
         // get_second_ver_cord(data);
         // hit_hor_wall(data); 
-         check_intersictions(data);
+        check_intersictions(data);
         // get_intercepts(data);
         // draw_ray(data, data->cords.xb_hor , data->cords.yb_hor, GREEN);
         // draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);

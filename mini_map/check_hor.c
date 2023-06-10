@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 10:19:16 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 14:52:25 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int check_hit_hor(char **map, int x_cor, int y_cor)
 
     x = x_cor / CARE;
     y = y_cor / CARE;
+    // printf("%d %d\n", x, y);
     if(map[y][x] == '1' || map[y - 1][x] == '1')
         return (0);
     return (1);
@@ -116,7 +117,7 @@ int   hit_hor_wall(t_data *data)
             data->cords.xb_hor = data->win.map_x - CARE;
         if(data->cords.xb_hor <= 0)
             data->cords.xb_hor = CARE;
-        if(!check_hit_hor(data->map, data->cords.xb_hor, data->cords.yb_hor))
+        if(!check_hit_hor(data->map, (int)data->cords.xb_hor, (int)data->cords.yb_hor))
             return (1);
         data->cords.xb_hor += data->cords.xsteps_hor;
         data->cords.yb_hor += y_step;  
