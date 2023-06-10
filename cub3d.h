@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/24 11:15:53 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 11:15:40 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_X 1000
 # define WIN_Y 640
 # define CARE 16
-# define P_SIZE 6
+# define P_SIZE 4
 # define MAP_X 320
 # define MAP_Y 224
 
@@ -137,5 +137,6 @@ int   hit_ver_wall(t_data *data);
 int   hit_hor_wall(t_data *data);
   int get_intercepts(t_data *data);
 int get_intercepts_ver(t_data *data);
+ void draw_rays(t_data *data);
 void check_intersictions(t_data *data);
 # endif

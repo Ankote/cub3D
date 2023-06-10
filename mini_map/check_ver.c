@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/23 19:32:58 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 11:08:49 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int get_intercepts_ver(t_data *data)
     double tang;
     
     tang =  tan(data->player.ray_angle);
-    data->cords.xinterc_ver = floor(data->player.px_pos / CARE) * CARE;
-    if(cos(data->player.ray_angle) >= 0)
+    data->cords.xinterc_ver = floor(data->player.px_pos / CARE) * CARE; //looks left
+    if(cos(data->player.ray_angle) >= 0) //looks right
         data->cords.xinterc_ver += CARE;
-    data->cords.yinterc_ver = data->player.py_pos + tang * (data->cords.xinterc_ver - data->player.px_pos);
+    data->cords.yinterc_ver =  data->player.py_pos + tang * ((data->cords.xinterc_ver - data->player.px_pos));
     if(data->cords.yinterc_ver >= data->win.map_y)
-        data->cords.yinterc_ver = data->win.map_y - 1;
+        data->cords.yinterc_ver = data->win.map_y - CARE;
     if(data->cords.yinterc_ver <= 0)
         data->cords.yinterc_ver = 0;
     if(!check_hit_ver(data->map, data->cords.xinterc_ver, data->cords.yinterc_ver))
@@ -47,21 +47,35 @@ int get_intercepts_ver(t_data *data)
     return (0);                                                                                                                 
 }
 
+// int get_second_ver_cord(t_data *data)
+// {
+//     if(get_intercepts_ver(data))
+//         return(1);
+//     data->cords.xb_ver = data->cords.xinterc_ver - CARE;                       
+//     if(cos(data->player.ray_angle) >= 0 )// player looks right
+//         data->cords.xb_ver = data->cords.xinterc_ver + CARE;                                                             
+//     data->cords.yb_ver = data->cords.yinterc_ver + tan(data->player.ray_angle) * CARE;
+//     if(data->cords.yb_ver >= data->win.map_y )
+//         data->cords.yb_ver = data->win.map_y - CARE;
+//     if(data->cords.yb_ver <= 0)
+//         data->cords.yb_ver = 0;
+//     if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
+//         return (1);
+//     return (0);
+// }
+
 int get_second_ver_cord(t_data *data)
 {
     int look_down;
     int look_right;
 
-    look_down = 0;
-    look_right= 1;
     if(get_intercepts_ver(data))
-    {
-        // draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);
-        return(1);
-    }
-    if(sin(data->player.ray_angle) <= 0)// player looks down
+        return (1);
+    look_down = 0;
+    if(sin(data->player.ray_angle) <= 0)
         look_down = 1;
-    if(cos(data->player.ray_angle) <= 0)// player looks left
+    look_right= 1;
+    if(cos(data->player.ray_angle) <= 0)
         look_right = 0;
     data->cords.xb_ver = data->cords.xinterc_ver - CARE;
     data->cords.yb_ver = data->cords.yinterc_ver - tan(data->player.ray_angle) * CARE;
@@ -71,29 +85,24 @@ int get_second_ver_cord(t_data *data)
         data->cords.yb_ver = data->cords.yinterc_ver + tan(data->player.ray_angle) * CARE;
     }
     if(data->cords.yb_ver >= data->win.map_y )
-        data->cords.yb_ver = data->win.map_y - 1;
+        data->cords.yb_ver = data->win.map_y - CARE;
     if(data->cords.yb_ver <= 0)
         data->cords.yb_ver = 0;
     if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
-    {
-       
         return (1);
-    }
     return (0);
 }
 
+
 int   hit_ver_wall(t_data *data)
- {   
-    int x_step;
+{   
+    double x_step;
     
     if(get_second_ver_cord(data))
-    {
-        draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);
         return(1);
-    }
     data->cords.ysteps_ver =  data->cords.yb_ver - data->cords.yinterc_ver;
     x_step = CARE;
-    if(sin(data->player.ray_angle <= 0))//player looks down
+    if(cos(data->player.ray_angle ) <= 0)//player looks down
         x_step = - CARE ;
     while(1)
     {
@@ -102,12 +111,9 @@ int   hit_ver_wall(t_data *data)
         if(data->cords.yb_ver <= 0)
             data->cords.yb_ver = 0;
         if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
-        {
-            draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);
             return (1);  
-        }
         data->cords.xb_ver += x_step;
         data->cords.yb_ver += data->cords.ysteps_ver;
     }  
     return(0); 
- }
+}

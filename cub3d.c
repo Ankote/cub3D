@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:39:40 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/25 11:44:53 by aankote          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 
@@ -33,7 +21,7 @@ int main(int ac ,char **av)
 	data->map = split_map(fd);
 	create_window(&window, data);
 	get_dimensions(data); 
-	data->player.routation_ang =  rad(270);
+	data->player.routation_ang =  rad(180);
 	data->player.turn_dir = 0;
 	data->player.walk_dir = 0;
 	draw_win(data);
