@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 11:08:49 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 18:25:15 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int check_hit_ver(char **map, int x_cor, int y_cor)
 
     x = x_cor / CARE;
     y = y_cor / CARE;
-    if(map[y][x] == '1' || map[y ][x- 1] == '1')
+    if(map[y][x] == '1' || map[y ][x - 1] == '1')
         return (0);
     return (1);
 }

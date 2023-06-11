@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 14:52:25 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/10 18:20:44 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int check_hit_hor(char **map, int x_cor, int y_cor)
 
     x = x_cor / CARE;
     y = y_cor / CARE;
-    // printf("%d %d\n", x, y);
+    printf("x => %d y => %d\n", x, y);
+    if(y == 14)
+        while(0);
     if(map[y][x] == '1' || map[y - 1][x] == '1')
         return (0);
     return (1);

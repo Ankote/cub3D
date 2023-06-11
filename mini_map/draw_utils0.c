@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 11:21:39 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/12 14:30:25 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:49:48 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int draw_map(t_data *data)
 
     x = 0;
     y = 0;
-	get_dimensions(data);
+	// get_dimensions(data);
     while(y < data->win.map_y)
     {
         x = 0;   
@@ -99,3 +99,24 @@ int draw_map(t_data *data)
     }
     return (0);
 }
+
+// int draw_map(t_data *data)
+// {
+//     int x;
+//     int y;
+
+//     x = 0;
+//     y = 0;
+// 	get_dimensions(data);
+//     while(y < data->win.map_y)
+//     {
+//         x = 0;   
+//         while(x < data->win.map_x)
+//         {
+//             draw_squart(data, x , y);
+//             x += CARE;
+//         }
+//         y += CARE;
+//     }
+//     return (0);
+// }
