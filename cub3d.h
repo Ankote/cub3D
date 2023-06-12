@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 16:24:23 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/12 18:23:51 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@
 /**********MATH****************************/
 # define PI 3.14159265359
 # define MOVE_SPEED 5
+# define FOV 60
+
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_img;
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -50,14 +60,7 @@ typedef struct s_mlx
 	int		map_y;
 }	t_win;
 
-typedef struct	s_img {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}
-			t_img;
+
 typedef struct  s_player
 {
 	double px_pos;
@@ -93,6 +96,7 @@ typedef struct s_data
 	char **map;
 	t_win win;
 	t_img img;
+	t_img main_img;
 	t_player player;
 	t_cord cords;
 }	t_data;
@@ -123,14 +127,14 @@ void	get_dimensions(t_data *data);
 void get_player_pos(t_data *data);
 int is_player(int c);
 int create_window(t_win *win, t_data *data);
-void draw_win();void draw_sky(t_img *img);
+void draw_win();
  void draw_ray(t_data *data, double x, double y, int color);
  double rad(double deg);
 int update_turn(t_data *data);
 int update_walk(t_data *data);
 int update_walk_rl(t_data *data);
 void draw_p_dir(t_data *data);
-void draw_rays(t_data *data);
+void build_walls(t_data *data);
 int get_second_ver_cord(t_data *data);
 double deg(double rad);
   /*******************/
@@ -138,6 +142,8 @@ int   hit_ver_wall(t_data *data);
 int   hit_hor_wall(t_data *data);
   int get_intercepts(t_data *data);
 int get_intercepts_ver(t_data *data);
- void draw_rays(t_data *data);
-void check_intersictions(t_data *data);
-# endif
+double check_intersictions(t_data *data);
+void draw_wall_l(t_data *data, double x0, double y0, int x1, int y1, int color);
+// void draw_wall(t_data *data);
+void draw_wall(t_data *data, double ray_dst, int x);
+# endif 

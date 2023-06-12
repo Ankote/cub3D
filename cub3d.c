@@ -24,7 +24,7 @@ int main(int ac ,char **av)
 	data->player.routation_ang =  rad(180);
 	data->player.turn_dir = 0;
 	data->player.walk_dir = 0;
-	draw_win(data);
+	// draw_win(data);
 	create_map(data);
 	mlx_hook(data->win.mlx_win, 17, 0, &ft_exit, NULL);
     mlx_hook(window.mlx_win, 2, 0, ft_key_hook, data);
