@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:47:28 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 09:56:57 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:18:49 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void draw_ray(t_data *data, double x, double y, int color)
     double x;
     double y;
 
-    x = cos(data->player.routation_ang) * 21 + data->player.px_pos + P_SIZE / 2;
-    y = sin(data->player.routation_ang) * 21 + data->player.py_pos + P_SIZE / 2;
-    draw_ray(data, x, y, RED);
+    x = cos(data->player.routation_ang) * 10 + data->player.px_pos + P_SIZE / 2;
+    y = sin(data->player.routation_ang) * 10 + data->player.py_pos + P_SIZE / 2;
+    draw_ray(data, x, y, GREEN);
 }

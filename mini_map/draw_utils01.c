@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:40:42 by aankote           #+#    #+#             */
-/*   Updated: 2023/05/24 11:15:44 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 09:37:45 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ void get_player_pos(t_data *data)
 			break;
 		y ++;
 	}
+	if(data->map[y][x] == 'N')
+		data->player.routation_ang =  rad(270);
+	if(data->map[y][x] == 'S')
+		data->player.routation_ang =  rad(90);
+	if(data->map[y][x] == 'E')
+		data->player.routation_ang =  rad(0);
+	if(data->map[y][x] == 'W')
+		data->player.routation_ang =  rad(180);
+	data->player.turn_dir = 0;
 	data->player.px_pos = x * CARE;
 	data->player.py_pos = y * CARE;
 }

@@ -6,13 +6,13 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:37:57 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/12 18:31:35 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/12 19:35:41 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void draw_wall_l(t_data *data, double x0, double y0, int x1, int y1, int color)
+void draw_wall_l(t_data *data, double x0, double y0, double x1, double y1, double color)
 {
     int steps;
     int xinc;
@@ -44,16 +44,21 @@ void draw_wall(t_data *data, double ray_dst, int x)
     double y_end;
     
     dst_proj_plan = (WIN_X / 2) / tan(rad(FOV) / 2);
-    wall_height = ((CARE / ray_dst) * dst_proj_plan);
+    wall_height = (CARE / ray_dst) * dst_proj_plan;
     y_start = (WIN_Y / 2) - (wall_height / 2);
     if(y_start < 0)
         y_start = 0;
     y_end = y_start + wall_height;
     if(y_end > WIN_Y)
         y_end = WIN_Y;
-    draw_wall_l(data,x , y_start, x, y_end, RED);
+    int y = y_start;
+    while (y <  y_end)
+    {
+        my_mlx_pixel_put(&data->main_img, x, y, 0x0d4780f);
+        y++;
+    }
+    // draw_wall_l(data,x , y_start, x, y_end, RED);
 }
-
 
 void build_walls(t_data *data)
 {
@@ -67,9 +72,10 @@ void build_walls(t_data *data)
     while(x < WIN_X)
     {
         ds = check_intersictions(data);
-        data->player.ray_angle += rad(60) / WIN_X;
-        ds = ds * cos(data->player.ray_angle - data->player.routation_ang);
+     
+        ds *= cos(data->player.ray_angle - data->player.routation_ang);
         draw_wall(data, ds, x);
+        data->player.ray_angle += rad(60) / WIN_X;
         x ++;
     }
  }

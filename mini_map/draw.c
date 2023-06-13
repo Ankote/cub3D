@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/12 18:14:47 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:19:29 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void    angle_adjust(double *ray_angle){
 
 int initializ(t_data *data)
 {
-	angle_adjust(&data->player.routation_ang);//foo
 	get_dimensions(data);
+	angle_adjust(&data->player.routation_ang);//foo
     draw_map(data);
-    draw_lines(data);
+    // draw_lines(data);
+	draw_p_dir(data);
     draw_player(data, data->player.px_pos, data->player.py_pos);
 	draw_win(data);
-	draw_p_dir(data);
 	mlx_put_image_to_window(data->win.mlx, data->win.mlx_win, data->img.img, 0, 0);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 11:21:39 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/11 14:49:48 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:18:58 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int is_player(int c)
         return (1);
     return (0);
 }
+
 int draw_squart(t_data *data ,int x, int y)
 {
     int x0;
@@ -73,7 +74,7 @@ int draw_player(t_data *data, int x_pos, int y_pos)
     {
         x = x_pos;
         while(x < x_pos + P_SIZE)
-             my_mlx_pixel_put(&data->img, x++, y, PLAYER);
+             my_mlx_pixel_put(&data->img, x++, y, RED);
         y ++;
     }
     return (0);
@@ -99,24 +100,3 @@ int draw_map(t_data *data)
     }
     return (0);
 }
-
-// int draw_map(t_data *data)
-// {
-//     int x;
-//     int y;
-
-//     x = 0;
-//     y = 0;
-// 	get_dimensions(data);
-//     while(y < data->win.map_y)
-//     {
-//         x = 0;   
-//         while(x < data->win.map_x)
-//         {
-//             draw_squart(data, x , y);
-//             x += CARE;
-//         }
-//         y += CARE;
-//     }
-//     return (0);
-// }

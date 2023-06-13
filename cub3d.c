@@ -19,11 +19,10 @@ int main(int ac ,char **av)
 	data = (t_data *)malloc(sizeof(t_data));
 	fd = open(av[1], O_RDONLY, 0777);
 	data->map = split_map(fd);
+	get_player_pos(data);
 	create_window(&window, data);
 	get_dimensions(data); 
-	data->player.routation_ang =  rad(180);
-	data->player.turn_dir = 0;
-	data->player.walk_dir = 0;
+
 	// draw_win(data);
 	create_map(data);
 	mlx_hook(data->win.mlx_win, 17, 0, &ft_exit, NULL);

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/12 18:23:51 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:15:03 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_X 1000
 # define WIN_Y 640
 # define CARE 16
-# define P_SIZE 4
+# define P_SIZE 2
 # define MAP_X 320
 # define MAP_Y 224
 
@@ -40,7 +40,7 @@
 # define GREEN 0x0000CA44
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 5
+# define MOVE_SPEED 3
 # define FOV 60
 
 typedef struct	s_img {
@@ -143,7 +143,7 @@ int   hit_hor_wall(t_data *data);
   int get_intercepts(t_data *data);
 int get_intercepts_ver(t_data *data);
 double check_intersictions(t_data *data);
-void draw_wall_l(t_data *data, double x0, double y0, int x1, int y1, int color);
+void draw_wall_l(t_data *data, double x0, double y0, double x1, double y1, double color);
 // void draw_wall(t_data *data);
 void draw_wall(t_data *data, double ray_dst, int x);
 # endif 

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/12 18:23:04 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:16:05 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ double check_intersictions(t_data *data)
     {
         x = data->cords.xb_hor;
         y = data->cords.yb_hor;
-        draw_ray(data, x , y, RED);
+        // draw_ray(data, x , y, RED);
         return(hor_line);
     }
     else
     {
         x = data->cords.xb_ver;
         y = data->cords.yb_ver;
-        draw_ray(data, x , y, RED);
+        // draw_ray(data, x , y, RED);
         return(ver_line);
     }
 }
