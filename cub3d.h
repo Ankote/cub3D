@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/13 13:15:03 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/15 11:14:00 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
  #include <fcntl.h>
 
-# define WIN_X 1000
-# define WIN_Y 640
+# define WIN_X 1920
+# define WIN_Y 1080
 # define CARE 16
 # define P_SIZE 2
 # define MAP_X 320
@@ -34,13 +34,13 @@
 # define LINE 0x00AFAD9D
 # define WALL 0x00330019
 # define WALL 0x00330019
-# define SKY 0x00C4F6FC
-# define FLOOR 0x0093FFBE
+# define SKY 0x717171
+# define FLOOR 0x383838
 # define RED 0x00FF0000
 # define GREEN 0x0000CA44
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 3
+# define MOVE_SPEED 6
 # define FOV 60
 
 typedef struct	s_img {
@@ -106,7 +106,7 @@ int				ft_exit(void *key);
 int				ft_key_hook(int key, t_data *data);
 int				draw_squart(t_data *data ,int x, int y);
 int				draw_lines(t_data *data);
-int				draw_player(t_data *data, int x_pos, int y_pos);
+int draw_player(t_data *data);
 int				replace_player(t_data *data, int x_pos, int y_pos);
 int				draw_map(t_data *data);
 
@@ -146,4 +146,8 @@ double check_intersictions(t_data *data);
 void draw_wall_l(t_data *data, double x0, double y0, double x1, double y1, double color);
 // void draw_wall(t_data *data);
 void draw_wall(t_data *data, double ray_dst, int x);
+
+void	drawmap(t_data *data);
+void check_limits_hor(double *x);
+void check_limits_ver(double *y);
 # endif 

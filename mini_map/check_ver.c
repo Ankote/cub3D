@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 18:25:15 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/15 10:59:56 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int check_hit_ver(char **map, int x_cor, int y_cor)
 
     x = x_cor / CARE;
     y = y_cor / CARE;
-    if(map[y][x] == '1' || map[y ][x - 1] == '1')
+    if((map[y][x] == '1' || map[y ][x - 1] == '1')
+    || (map[y][x] == ' ' || map[y ][x - 1] == ' '))
         return (0);
     return (1);
 }
@@ -37,49 +38,23 @@ int get_intercepts_ver(t_data *data)
         data->cords.yinterc_ver = data->win.map_y - CARE;
     if(data->cords.yinterc_ver <= 0)
         data->cords.yinterc_ver = 0;
+    // check_limits_ver(&data->cords.yinterc_ver);
     if(!check_hit_ver(data->map, data->cords.xinterc_ver, data->cords.yinterc_ver))
     {
         data->cords.xb_ver = data->cords.xinterc_ver;
         data->cords.yb_ver = data->cords.yinterc_ver ;
-        // draw_ray(data, data->cords.xb_ver , data->cords.yb_ver, GREEN);
         return (1); 
     }
     return (0);                                                                                                                 
 }
 
-// int get_second_ver_cord(t_data *data)
-// {
-//     if(get_intercepts_ver(data))
-//         return(1);
-//     data->cords.xb_ver = data->cords.xinterc_ver - CARE;                       
-//     if(cos(data->player.ray_angle) >= 0 )// player looks right
-//         data->cords.xb_ver = data->cords.xinterc_ver + CARE;                                                             
-//     data->cords.yb_ver = data->cords.yinterc_ver + tan(data->player.ray_angle) * CARE;
-//     if(data->cords.yb_ver >= data->win.map_y )
-//         data->cords.yb_ver = data->win.map_y - CARE;
-//     if(data->cords.yb_ver <= 0)
-//         data->cords.yb_ver = 0;
-//     if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
-//         return (1);
-//     return (0);
-// }
-
 int get_second_ver_cord(t_data *data)
 {
-    int look_down;
-    int look_right;
-
     if(get_intercepts_ver(data))
         return (1);
-    look_down = 0;
-    if(sin(data->player.ray_angle) <= 0)
-        look_down = 1;
-    look_right= 1;
-    if(cos(data->player.ray_angle) <= 0)
-        look_right = 0;
     data->cords.xb_ver = data->cords.xinterc_ver - CARE;
     data->cords.yb_ver = data->cords.yinterc_ver - tan(data->player.ray_angle) * CARE;
-    if(look_right)
+    if(cos(data->player.ray_angle) >= 0)
     {
         data->cords.xb_ver = data->cords.xinterc_ver + CARE;
         data->cords.yb_ver = data->cords.yinterc_ver + tan(data->player.ray_angle) * CARE;
@@ -88,6 +63,7 @@ int get_second_ver_cord(t_data *data)
         data->cords.yb_ver = data->win.map_y - CARE;
     if(data->cords.yb_ver <= 0)
         data->cords.yb_ver = 0;
+    // check_limits_ver(&data->cords.yb_ver);
     if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
         return (1);
     return (0);
@@ -110,10 +86,19 @@ int   hit_ver_wall(t_data *data)
             data->cords.yb_ver = data->win.map_y - CARE;
         if(data->cords.yb_ver <= 0)
             data->cords.yb_ver = 0;
+        // check_limits_ver(&data->cords.yb_ver);
         if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
             return (1);  
         data->cords.xb_ver += x_step;
         data->cords.yb_ver += data->cords.ysteps_ver;
     }  
     return(0); 
+}
+
+void check_limits_ver(double *y)
+{
+    if(*y > WIN_Y / 2)
+        *y = WIN_Y / 2 - CARE;
+    if(*y < 0)
+        *y = CARE;
 }

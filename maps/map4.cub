@@ -1,0 +1,18 @@
+NO ../textures/stone_wall.ppm
+SO ../textures/stone_wall1.ppm
+WE ../textures/stone_wall2.ppm
+EA ../textures/3dwall.ppm
+
+
+
+F 56,56,56
+C 113,113,113
+
+11111111
+10000001
+11000011
+10000011
+10100N01
+10000001
+10110001
+11111111

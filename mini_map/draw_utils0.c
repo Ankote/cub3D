@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 11:21:39 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/13 13:18:58 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/14 14:35:13 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,6 @@ int is_player(int c)
         return (1);
     if(c == 'S' || c == 'N')
         return (1);
-    return (0);
-}
-
-int draw_squart(t_data *data ,int x, int y)
-{
-    int x0;
-    int y0;
-    
-    y0 = y;
-    while(y < y0 + CARE)
-    {
-        x0 = x;
-        while(x0 < x + CARE)
-        {
-            if(data->map[y / CARE][x / CARE] == '1')
-                my_mlx_pixel_put(&data->img, x0 ++, y, WALL);
-            else if(data->map[y / CARE][x / CARE] == '0' || is_player(data->map[y / CARE][x / CARE]))
-                my_mlx_pixel_put(&data->img, x0 ++, y, WAY);
-            else
-                x0 ++;
-        }
-        y ++;
-    }
     return (0);
 }
 
@@ -56,7 +33,7 @@ int draw_lines(t_data *data)
         while (x < data->win.map_x)
         {
             if(x % CARE == 0 || y % CARE == 0)
-                my_mlx_pixel_put(&data->img, x, y, LINE); 
+                my_mlx_pixel_put(&data->main_img, x, y, LINE); 
             x ++;
         }
         y ++;
@@ -64,17 +41,40 @@ int draw_lines(t_data *data)
     return (0);
 }
 
-int draw_player(t_data *data, int x_pos, int y_pos)
+int draw_player(t_data *data)
 {
     int x;
     int y;
     
-    y = y_pos;
-    while(y < y_pos + P_SIZE)
+    y = 116;
+    while(y < 116 + P_SIZE)
     {
-        x = x_pos;
-        while(x < x_pos + P_SIZE)
-             my_mlx_pixel_put(&data->img, x++, y, RED);
+        x = 116;
+        while(x < 116 + P_SIZE)
+             my_mlx_pixel_put(&data->main_img, x++, y, RED);
+        y ++;
+    }
+    return (0);
+}
+
+int draw_squart(t_data *data ,int x, int y)
+{
+    int x0;
+    int y0;
+    
+    y0 = y;
+    while(y < y0 + CARE)
+    {
+        x0 = x;
+        while(x0 < x + CARE)
+        {
+            if(data->map[y / CARE][x / CARE] == '1')
+                my_mlx_pixel_put(&data->main_img, x0 ++, y, WALL);
+            else if(data->map[y / CARE][x / CARE] == '0' || is_player(data->map[y / CARE][x / CARE]))
+                my_mlx_pixel_put(&data->main_img, x0 ++, y, WAY);
+            else
+                x0 ++;
+        }
         y ++;
     }
     return (0);
@@ -87,7 +87,7 @@ int draw_map(t_data *data)
 
     x = 0;
     y = 0;
-	// get_dimensions(data);
+	get_dimensions(data);
     while(y < data->win.map_y)
     {
         x = 0;   

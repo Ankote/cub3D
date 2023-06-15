@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/10 18:20:44 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/15 12:53:12 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,17 @@ int check_hit_hor(char **map, int x_cor, int y_cor)
 
     x = x_cor / CARE;
     y = y_cor / CARE;
-    printf("x => %d y => %d\n", x, y);
-    if(y == 14)
-        while(0);
+    //printf("x => %d y => %d\n", x, y);
+    // if(y == 14)
+    //     while(0);
     if(map[y][x] == '1' || map[y - 1][x] == '1')
+        return (0);
+    if(map[y][x] == '.' || map[y - 1][x] == '.')
+        return (0);
+    if(map[y][x] == ' ' || map[y - 1][x] == ' ')
         return (0);
     return (1);
 }
-
-// int get_intercepts(t_data *data)
-// {
-//     data->cords.yinterc_hor = floor((data->player.py_pos ) / CARE) * CARE;
-//     if(sin(data->player.ray_angle) > 0)
-//         data->cords.yinterc_hor += CARE ;
-//     data->cords.xinterc_hor = (data->player.px_pos ) + (data->cords.yinterc_hor 
-//         - data->player.py_pos) / tan(data->player.ray_angle);
-//     if(data->cords.xinterc_hor >= data->win.map_x)
-//         data->cords.xinterc_hor = data->win.map_x - CARE;
-//     if(data->cords.xinterc_hor <= 0)
-//         data->cords.xinterc_hor = 0;
-//     // if(!check_hit_hor(data->map, data->cords.xinterc_hor, data->cords.yinterc_hor))
-//     // {
-//         data->cords.xb_hor = data->cords.xinterc_hor;
-//         data->cords.yb_hor = data->cords.yinterc_hor;
-//         return (1);
-//     // }
-//     return(0);
-// }
-
 
 int get_intercepts(t_data *data)
 {

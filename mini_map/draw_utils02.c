@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:47:28 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/13 13:18:49 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:35:20 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 //     y = data->player.py_pos + P_SIZE / 2;
 //     while(i < steps)
 //     {
-//         my_mlx_pixel_put(&data->img, x, y, color);
+//         my_mlx_pixel_put(&data->main_img, x, y, color);
 //         x += xinc;
 //         y += yinc;
 //         i ++;
@@ -53,7 +53,7 @@ void draw_ray(t_data *data, double x, double y, int color)
     y = data->player.py_pos + P_SIZE / 2;
     while(i < steps)
     {
-        my_mlx_pixel_put(&data->img, (int)x, (int)y, color);
+        my_mlx_pixel_put(&data->main_img, (int)x, (int)y, color);
         x += xinc;
         y += yinc;
         i ++;
