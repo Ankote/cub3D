@@ -6,35 +6,11 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:47:28 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/13 15:35:20 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/16 09:28:40 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-// void draw_ray(t_data *data, double x, double y, int color)
-// {
-//     double steps;
-//     double xinc;
-//     double yinc;
-//     int i;
-
-//     i = 0;
-//     steps = fabs(x - (data->player.px_pos - P_SIZE / 2));
-//     if(fabs(y - data->player.py_pos - P_SIZE / 2) > fabs(x - data->player.px_pos - P_SIZE / 2))
-//         steps = fabs(y - data->player.py_pos - P_SIZE / 2);
-//     xinc = (x - data->player.px_pos - P_SIZE / 2) / steps;
-//     yinc = (y - data->player.py_pos - P_SIZE / 2) / steps;
-//     x =  data->player.px_pos + P_SIZE / 2;
-//     y = data->player.py_pos + P_SIZE / 2;
-//     while(i < steps)
-//     {
-//         my_mlx_pixel_put(&data->main_img, x, y, color);
-//         x += xinc;
-//         y += yinc;
-//         i ++;
-//     }
-// }
 
 void draw_ray(t_data *data, double x, double y, int color)
 {
@@ -67,5 +43,5 @@ void draw_ray(t_data *data, double x, double y, int color)
 
     x = cos(data->player.routation_ang) * 10 + data->player.px_pos + P_SIZE / 2;
     y = sin(data->player.routation_ang) * 10 + data->player.py_pos + P_SIZE / 2;
-    draw_ray(data, x, y, GREEN);
+    draw_ray(data, x, y, RAY);
 }

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 11:14:00 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:36:45 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@
 # define FLOOR 0x383838
 # define RED 0x00FF0000
 # define GREEN 0x0000CA44
+# define RAY 0x0017F8
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 6
+# define MOVE_SPEED 12
 # define FOV 60
 
 typedef struct	s_img {
@@ -147,7 +148,8 @@ void draw_wall_l(t_data *data, double x0, double y0, double x1, double y1, doubl
 // void draw_wall(t_data *data);
 void draw_wall(t_data *data, double ray_dst, int x);
 
-void	drawmap(t_data *data);
+// int	draw_map(t_data *data);
 void check_limits_hor(double *x);
 void check_limits_ver(double *y);
+void	my_mlx_pixel_put1(t_data *data, t_img *img, int x, int y, int color);
 # endif 

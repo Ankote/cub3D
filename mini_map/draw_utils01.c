@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:40:42 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 10:44:59 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/17 10:57:03 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void get_dimensions(t_data *data)
 			x ++;
 		y++;
 	}
-	 data->win.map_x = x * CARE;
-	 data->win.map_y = y * CARE;
+	data->win.map_x = x * CARE;
+	data->win.map_y = y * CARE;
 }
 
 void get_player_pos(t_data *data)
@@ -57,8 +57,8 @@ void get_player_pos(t_data *data)
 	if(data->map[y][x] == 'W')
 		data->player.routation_ang =  rad(180);
 	data->player.turn_dir = 0;
-	data->player.px_pos = x * CARE;
-	data->player.py_pos = y * CARE;
+	data->player.px_pos = x * CARE + CARE / 2;
+	data->player.py_pos = y * CARE + CARE / 2;
 }
 
 double rad(double deg)

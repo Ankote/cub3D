@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/14 15:22:54 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/17 11:13:56 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void    angle_adjust(double *ray_angle){
 
 int initializ(t_data *data)
 {
+
 	get_dimensions(data);
 	angle_adjust(&data->player.routation_ang);//foo
 	draw_win(data);
-    // draw_map(data);
-    // draw_lines(data);
+    draw_map(data);
 	// drawmap(data);
 	draw_p_dir(data);
     draw_player(data);
@@ -59,12 +59,6 @@ int initializ(t_data *data)
 
 void create_map(t_data *data)
 {
-	t_img	img;
-	
-	img.img = mlx_new_image(data->win.mlx, data->win.map_x, data->win.map_y);
-	data->main_img = img;
-	data->main_img.addr = mlx_get_data_addr(data->main_img.img, &data->main_img.bits_per_pixel, &data->main_img.line_length,
-								&data->main_img.endian);
 	get_player_pos(data);
 	initializ(data);
 }

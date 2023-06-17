@@ -6,7 +6,7 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/12 15:18:26 by aankote          ###   ########.fr        #
+#    Updated: 2023/06/16 08:50:10 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 
 FILES = cub3d.c events.c movements/move.c \
 		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c mini_map/draw_utils02.c \
-		mini_map/check_hor.c mini_map/check_ver.c mini_map/check_intersictions.c window/main_window.c \
+		mini_map/draw_utils03.c mini_map/check_hor.c mini_map/check_ver.c mini_map/check_intersictions.c window/main_window.c \
 		window/main_utils.c
 
 OBJCS = $(FILES:.c=.o)
@@ -33,7 +33,7 @@ $(NAME) : $(OBJCS)
 	@make -C libft
 	@make -C get_next_line
 	@echo "\033[0;32mCompiling cub3D..."
-	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME) $(INCLUDES)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME) 
 
 clean :
 	@echo "\033[0;31mCleaning libft..."

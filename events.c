@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:48:48 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/14 15:25:09 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/16 11:46:27 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,15 @@ int	ft_exit(void *key)
 int ft_key_hook(int key, t_data *data)
 {
     if(key == 53)
-    {
-        //printf("Exit\n");
         exit (0);
-    }
     if(key == 13 || key == 126)
-    {
-        //printf("Up\n");
         move_up(data);
-    }
     if(key == 1 || key == 125)
-    {
         move_down(data);
-        //printf("down\n");
-    }
     if(key == 2)
-    {
-        //printf("Right\n");
         move_right(data);
-    }
     if(key == 0)
-    {
         move_left(data);
-        //printf("Left\n");
-    }
     if(key == 123)
     {
         data->player.turn_dir = -1;

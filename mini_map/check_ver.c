@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 10:59:56 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/17 11:56:14 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int get_intercepts_ver(t_data *data)
         data->cords.yinterc_ver = data->win.map_y - CARE;
     if(data->cords.yinterc_ver <= 0)
         data->cords.yinterc_ver = 0;
-    // check_limits_ver(&data->cords.yinterc_ver);
     if(!check_hit_ver(data->map, data->cords.xinterc_ver, data->cords.yinterc_ver))
     {
         data->cords.xb_ver = data->cords.xinterc_ver;
@@ -63,7 +62,6 @@ int get_second_ver_cord(t_data *data)
         data->cords.yb_ver = data->win.map_y - CARE;
     if(data->cords.yb_ver <= 0)
         data->cords.yb_ver = 0;
-    // check_limits_ver(&data->cords.yb_ver);
     if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
         return (1);
     return (0);
@@ -86,7 +84,6 @@ int   hit_ver_wall(t_data *data)
             data->cords.yb_ver = data->win.map_y - CARE;
         if(data->cords.yb_ver <= 0)
             data->cords.yb_ver = 0;
-        // check_limits_ver(&data->cords.yb_ver);
         if(!check_hit_ver(data->map, data->cords.xb_ver, data->cords.yb_ver))
             return (1);  
         data->cords.xb_ver += x_step;
