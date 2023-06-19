@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 19:30:57 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 15:39:21 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_things(t_data *data)
 	data->player.ray_angle = data->player.routation_ang - rad(30);
 	if (data->player.routation_ang <= 0.1 && data->player.routation_ang >= 0)
 		data->player.ray_angle = rad(330);
-	data->wall.distanceProjPlane = fabs((WIN_X / 2) * tan(rad(30)));
+	data->wall.distanceProjPlane = fabs((WIN_X / 2) / tan(rad(30)));
 	while (x < WIN_X)
 	{
 		ds = check_intersictions(data);

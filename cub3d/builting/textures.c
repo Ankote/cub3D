@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 16:49:36 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/17 14:47:25 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 15:38:58 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	generate_3d(t_data *data, int x)
 	}
 	while (j < WIN_Y)
 		my_mlx_pixel_put(&data->main_img, x, j++, data->wall.floor_color);
-		free(tex);
+	free(tex);
 }
 
 void	do_projection(t_data *data, int x, double ds)

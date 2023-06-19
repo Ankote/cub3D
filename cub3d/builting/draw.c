@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 18:48:18 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 21:00:26 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ int update_turn(t_data *data)
 	data->player.routation_ang += MOVE_SPEED * rad(data->player.turn_dir);
 	initializ(data);
 	return (0);
-}
-
-void    angle_adjust(double *ray_angle){
-    *ray_angle = fmod(*ray_angle , (2 * PI));
-    if(*ray_angle < 0)
-        *ray_angle = (2 * PI) + *ray_angle;
 }
 
 int initializ(t_data *data)

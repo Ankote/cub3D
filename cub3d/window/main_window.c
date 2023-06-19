@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:12:50 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 12:56:15 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/17 14:45:20 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int create_window(t_win *win, t_data *data)
     data->win = *win;
     return (0);
 }
+
 void draw_sky(t_data *data)
 {
     int x;

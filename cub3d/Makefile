@@ -6,16 +6,19 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/17 15:03:20 by aankote          ###   ########.fr        #
+#    Updated: 2023/06/18 21:05:15 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 FILES = cub3d.c events.c movements/move.c \
-		read_map.c builting/draw.c builting/draw_utils0.c builting/draw_utils01.c builting/draw_utils02.c \
-		builting/check_hor.c builting/check_ver.c builting/check_intersictions.c window/main_window.c \
-		parse/parse.c parse/extensions.c parse/checks.c parse/textures.c parse/checks1.c\
+		builting/draw.c builting/draw_utils0.c \
+		 builting/draw_utils01.c builting/draw_utils02.c \
+		builting/check_hor.c builting/check_ver.c \
+		 builting/check_intersictions.c window/main_window.c \
+		parse/parse.c parse/extensions.c parse/checks.c \
+		parse/textures.c parse/checks1.c\
 		parse/vulnerabilities.c builting/textures.c
 
 OBJCS = $(FILES:.c=.o)
@@ -34,7 +37,7 @@ $(NAME) : $(OBJCS)
 	@make -C libft
 	@make -C get_next_line
 	@echo "\033[0;32mCompiling cub3D..."
-	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME) $(INCLUDES)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME)
 
 
 clean :
@@ -51,7 +54,7 @@ fclean : clean
 	@echo "\nDeleting executable..."
 	rm -fr $(NAME)
 
-re : fclean all
+re : fclean bonus
 
 run : all clean
 

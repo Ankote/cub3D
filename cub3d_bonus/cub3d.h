@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 21:00:38 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 18:58:23 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  #include <fcntl.h>
  #include "stdbool.h"
 
-# define WIN_X 1992
+# define WIN_X 1920
 # define WIN_Y 1080
 # define CARE 64
 # define P_SIZE 4
@@ -43,7 +43,7 @@
 # define YELLOW 0x00FFFF00
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 6
+# define MOVE_SPEED 12
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -171,81 +171,83 @@ typedef struct s_map
 
 int				ft_exit(void *key);
 int				ft_key_hook(int key, t_data *data);
+
+/***********************Mini Map**************************/
 int				draw_squart(t_data *data ,int x, int y);
 int				draw_lines(t_data *data);
 int 			draw_player(t_data *data);
-int				replace_player(t_data *data, int x_pos, int y_pos);
 void			draw_map(t_data *data);
+void			create_map(t_data *data);
+void 			draw_p_dir(t_data *data);
 
-/*************movements************************/
+/***********************movements************************/
 int				move_down(t_data *data);
 int				move_up(t_data *data);
 int				move_left(t_data *data);
 int				move_right(t_data *data);
+int				initializ(t_data *data);
 
-/****************Read map****************/
-char	**split_map(int fd);
+/***********************UTILS*****************************/
+int 			create_window(t_win *win, t_data *data);
+void 			get_player_pos(t_data *data);
+void 			draw_ray(t_data *data, double x, double y, int color);
+double 			rad(double deg);
+double 			deg(double rad);
+void 			draw_rays(t_data *data);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int 			is_player(int c);
+void			get_dimensions(t_data *data);
+void    angle_adjust(double *ray_angle);
+/***********************MOVEMENTS***********************/
+int 			update_turn(t_data *data);
+int 			update_walk(t_data *data);
+int 			update_walk_rl(t_data *data);
+int 			get_intercepts_ver(t_data *data);
+double 			check_intersictions(t_data *data);
 
-/*****************Draw msp***************/
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-void	create_map(t_data *data);
-int		initializ(t_data *data);
-void	get_dimensions(t_data *data);
-void get_player_pos(t_data *data);
-int is_player(int c);
-int create_window(t_win *win, t_data *data);
-void draw_win();
-void draw_sky(t_data *data);
- void draw_ray(t_data *data, double x, double y, int color);
- double rad(double deg);
-int update_turn(t_data *data);
-int update_walk(t_data *data);
-int update_walk_rl(t_data *data);
-void draw_p_dir(t_data *data);
-void draw_rays(t_data *data);
-int get_second_ver_cord(t_data *data);
-double deg(double rad);
-  /*******************/
-int   hit_ver_wall(t_data *data);
-int   hit_hor_wall(t_data *data);
-  int get_intercepts(t_data *data);
-int get_intercepts_ver(t_data *data);
- void draw_rays(t_data *data);
-double check_intersictions(t_data *data);
-void draw_things(t_data *data);
+/***********************CASTING RAYS AND WALLS**********/
 
-//*************************PARSSING*************************//
+int   			hit_ver_wall(t_data *data);
+int   			hit_hor_wall(t_data *data);
+int 			get_intercepts(t_data *data);
+void 			draw_things(t_data *data);
+void 			draw_win();
+void 			draw_sky(t_data *data);
+void 			draw_rays(t_data *data);
+int 			get_second_ver_cord(t_data *data);
 
-int		check_for_chars(char *line);
-int		check_extension(char *str);
-void	init(t_map *s_map);
-void	parse(char **map);
-char	**fill_map(int fd);
-char	*free_join(char *s1, char *s2);
-void	get_infos_from_map(t_map *s_map);
-void	get_specified_data(t_map *s_map);
-void	skip_useless_data(t_map *s_map);
-char	*ft_strtrim_free(char *str, char *rts);
-int		bubble_sort(char **s1);
-void	parse_first_part(t_map *s_map, int fd);
-void	check_for_textures_extension(t_map *s_map);
-void	check_for_textures_path(t_map *s_map);
-char	*test(char *str);
-void	check_for_max_255(char	*str, int *c_p);
-void	check_border_top(t_map *s_map);
-void	make_the_map_rectangle(t_map *s_map, int max);
-void	check_if_spaces(t_map *s_map);
-int		ft_check_right_top(t_map *s_map, int i, int j, int flag);
-int		ft_check_left_bottom(t_map *s_map, int i, int j, int flag);
-int		get_max_len(t_map *s_map);
-void	check_for_unwanted_chars(t_map *s_map);
-void	make_the_map_rectangle(t_map *s_map, int max);
-void	get_map(t_map *s_map);
-void	init_sec_part(t_map *s_map);
-void 	draw_floor(t_data *data);
-void 	draw_sky(t_data *data);
-void	generate_3d(t_data *data, int x);
-void	do_projection(t_data *data, int x, double ds);
-void	configure_data(t_data *data, t_img *tex);
+/***********************PARSSING************************/
+
+int				check_for_chars(char *line);
+int				check_extension(char *str);
+void			init(t_map *s_map);
+void			parse(char **map);
+char			**fill_map(int fd);
+char			*free_join(char *s1, char *s2);
+void			get_infos_from_map(t_map *s_map);
+void			get_specified_data(t_map *s_map);
+void			skip_useless_data(t_map *s_map);
+char			*ft_strtrim_free(char *str, char *rts);
+int				bubble_sort(char **s1);
+void			parse_first_part(t_map *s_map, int fd);
+void			check_for_textures_extension(t_map *s_map);
+void			check_for_textures_path(t_map *s_map);
+char			*test(char *str);
+void			check_for_max_255(char	*str, int *c_p);
+void			check_border_top(t_map *s_map);
+void			make_the_map_rectangle(t_map *s_map, int max);
+void			check_if_spaces(t_map *s_map);
+int				ft_check_right_top(t_map *s_map, int i, int j, int flag);
+int				ft_check_left_bottom(t_map *s_map, int i, int j, int flag);
+int				get_max_len(t_map *s_map);
+void			check_for_unwanted_chars(t_map *s_map);
+void			make_the_map_rectangle(t_map *s_map, int max);
+void			get_map(t_map *s_map);
+void			init_sec_part(t_map *s_map);
+void 			draw_floor(t_data *data);
+void 			draw_sky(t_data *data);
+void			generate_3d(t_data *data, int x);
+void			do_projection(t_data *data, int x, double ds);
+void			configure_data(t_data *data, t_img *tex);
 
 # endif

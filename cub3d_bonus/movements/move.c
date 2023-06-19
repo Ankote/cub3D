@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:32:52 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 11:12:17 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 13:56:03 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int check_move(t_data *data, int x, int y)
     return (1);
 }
 
- int move_up(t_data *data)
+int move_up(t_data *data)
 {
     int x;
     int y;

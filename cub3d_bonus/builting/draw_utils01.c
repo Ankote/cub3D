@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:40:42 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 12:03:32 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 18:56:15 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,10 @@ void get_player_pos(t_data *data)
 			break;
 		y ++;
 	}
-	data->player.px_pos = x * CARE + CARE / 2;
-	data->player.py_pos = y * CARE + CARE / 2;
+	data->player.px_pos = x * CARE + 2;
+	data->player.py_pos = y * CARE + 2;
 	set_reg(data,x, y);
 }
-
 
 double rad(double deg)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_intersictions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/16 16:51:42 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 15:39:21 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,18 @@ void	draw_things(t_data *data)
 	double	ds;
 
 	x = 0;
+	data->player.ray_angle = data->player.routation_ang - rad(30);
 	if (data->player.routation_ang <= 0.1 && data->player.routation_ang >= 0)
 		data->player.ray_angle = rad(330);
-	data->player.ray_angle = data->player.routation_ang - rad(30);
-	data->wall.distanceProjPlane = fabs((WIN_X / 2) * tan(rad(30)));
+	data->wall.distanceProjPlane = fabs((WIN_X / 2) / tan(rad(30)));
 	while (x < WIN_X)
 	{
 		ds = check_intersictions(data);
 		do_projection(data, x, ds);
 		data->wall.is_horiz_hit = 0;
 		data->player.ray_angle += rad(60) / WIN_X;
+		if(data->player.ray_angle >= rad(360))
+			data->player.ray_angle  = 0;
 		x ++;
 	}
 }

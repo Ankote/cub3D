@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 21:00:50 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 18:57:50 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ int update_turn(t_data *data)
 	return (0);
 }
 
-void    angle_adjust(double *ray_angle){
-    *ray_angle = fmod(*ray_angle , (2 * PI));
-    if(*ray_angle < 0)
-        *ray_angle = (2 * PI) + *ray_angle;
-	 if(*ray_angle >= 360)
-        *ray_angle = 0;
-}
-
 int initializ(t_data *data)
 {
 	angle_adjust(&data->player.routation_ang);//foo
@@ -52,6 +44,7 @@ int initializ(t_data *data)
 	draw_win(data);
 	draw_map(data);
 	draw_player(data);
+	draw_p_dir(data);
 	mlx_put_image_to_window(data->win.mlx, data->win.mlx_win, data->main_img.img, 0, 0);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:12:05 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 21:28:12 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 15:53:51 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int draw_player(t_data *data)
     while(y < MAP_Y / 2 + P_SIZE)
     {
         x = MAP_X / 2;
-        while(x < MAP_X / 2+ P_SIZE)
-             my_mlx_pixel_put(&data->main_img, x++, y, PLAYER);
+        while(x < MAP_X / 2 + P_SIZE)
+             my_mlx_pixel_put(&data->main_img, x++, y, RED);
         y ++;
     }
     return (0);
@@ -121,26 +121,29 @@ void draw_map(t_data *data)
     int mx;
     int my;
     
-    my =  (data->player.py_pos / 4 - MAP_Y / 2) - 16;
+    my =  (data->player.py_pos / 4 - MAP_Y / 2) - 8;
     y = -1;
     while(++y < MAP_Y)
     {
         x = -1;
-        mx = (data->player.px_pos / 4 - MAP_X / 2) - 16;
+        mx = (data->player.px_pos / 4 - MAP_X / 2) - 8;
         while(++x < MAP_X)
         {
-            if(mx  / 16  > 0 && my  / 16 > 0 && mx   < data->win.map_x   && my < data->win.map_y )
+            if((mx + 8)  / 16  >= 0 && (my + 8)  / 16 >= 0 
+            && (mx + 8)  < data->win.map_x / 4   && (my + 8) < data->win.map_y / 4)
             {
-                if(data->map->map_copy[my / 16][mx / 16] == '1')
+                if(data->map->map_copy[(my + 8) / 16][(mx + 8) / 16] == '1')
                 {
                     my_mlx_pixel_put(&data->main_img, x, y, WALL);
                 }
-                else if(data->map->map_copy[my / 16][mx / 16] == '0')
-                    my_mlx_pixel_put(&data->main_img, x, y, YELLOW);
-                }
-            // printf("%d %d\n", mx ,my);
-            mx ++;
+                else
+                    my_mlx_pixel_put(&data->main_img, x, y, 0xF1F1C1);
+            }
+            else
+                my_mlx_pixel_put(&data->main_img, x, y, 0xF1F1C1);
+            (mx) ++;
         }
         my ++;
     }
 }
+

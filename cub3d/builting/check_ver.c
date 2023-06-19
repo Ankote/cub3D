@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:42:10 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 11:55:38 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/18 18:55:55 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int get_intercepts_ver(t_data *data)
     double tang;
 
     tang =  tan(data->player.ray_angle);
-    data->cords.xinterc_ver = floor(data->player.px_pos / CARE) * CARE; //looks left
-    if(cos(data->player.ray_angle) >= 0) //looks right
+    data->cords.xinterc_ver = floor(data->player.px_pos / CARE) * CARE;
+    if(cos(data->player.ray_angle) >= 0)
         data->cords.xinterc_ver += CARE;
     data->cords.yinterc_ver =  data->player.py_pos + tang * ((data->cords.xinterc_ver - data->player.px_pos));
     if(data->cords.yinterc_ver >= data->win.map_y)
@@ -50,20 +50,11 @@ int get_intercepts_ver(t_data *data)
 
 int get_second_ver_cord(t_data *data)
 {
-    int look_down;
-    int look_right;
-
     if(get_intercepts_ver(data))
         return (1);
-    look_down = 0;
-    if(sin(data->player.ray_angle) <= 0)
-        look_down = 1;
-    look_right= 1;
-    if(cos(data->player.ray_angle) <= 0)
-        look_right = 0;
     data->cords.xb_ver = data->cords.xinterc_ver - CARE;
     data->cords.yb_ver = data->cords.yinterc_ver - tan(data->player.ray_angle) * CARE;
-    if(look_right)
+    if(cos(data->player.ray_angle) > 0)
     {
         data->cords.xb_ver = data->cords.xinterc_ver + CARE;
         data->cords.yb_ver = data->cords.yinterc_ver + tan(data->player.ray_angle) * CARE;
@@ -86,7 +77,7 @@ int   hit_ver_wall(t_data *data)
         return(1);
     data->cords.ysteps_ver =  data->cords.yb_ver - data->cords.yinterc_ver;
     x_step = CARE;
-    if(cos(data->player.ray_angle ) <= 0)//player looks down
+    if(cos(data->player.ray_angle ) <= 0)
         x_step = - CARE ;
     while(1)
     {

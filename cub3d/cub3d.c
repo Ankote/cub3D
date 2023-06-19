@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 15:13:21 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/17 15:13:26 by aankote          ###   ########.fr       */
+/*   Created: 2023/06/17 15:13:07 by aankote           #+#    #+#             */
+/*   Updated: 2023/06/18 18:03:04 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d.h"
 
@@ -27,7 +28,6 @@ t_img	*new_img(t_data *data, char *path)
 	img = malloc(sizeof(t_img));
 	if (!img)
 		ft_error("Error\nMalloc failed\n", "");
-	// printf("%d\n", open(path, O_RDONLY));
 	img->img = mlx_xpm_file_to_image(data->win.mlx, path, &img->width, &img->height);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
@@ -50,7 +50,6 @@ void	seconde_part(t_data *data, t_map *s_map)
 	data->player.turn_dir = 0;
 	data->player.walk_dir = 0;
 	create_map(data);
-	// draw_win(data);
 	mlx_hook(data->win.mlx_win, 17, 0, &ft_exit, NULL);
     mlx_hook(window.mlx_win, 2, 0, ft_key_hook, data);
 	mlx_loop(window.mlx);
