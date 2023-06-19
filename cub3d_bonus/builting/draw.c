@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:36:56 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 18:57:50 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 14:21:21 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int update_walk(t_data *data)
 {
-	data->player.movestep = data->player.walk_dir * MOVE_SPEED;
+	mlx_clear_window(data->win.mlx, data->win.mlx_win);
+	data->player.movestep = data->player.walk_dir * (MOVE_SPEED);
 	data->player.px_pos += cos(data->player.routation_ang) * data->player.movestep;
 	data->player.py_pos += sin(data->player.routation_ang) * data->player.movestep;
 	initializ(data);

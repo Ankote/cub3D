@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 18:53:53 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 15:19:57 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int get_second_hor_cord(t_data *data)
 {
     if(get_intercepts(data))
         return (1);
+
     data->cords.yb_hor = data->cords.yinterc_hor - CARE;
+     data->cords.xb_hor = data->cords.xinterc_hor - (CARE / tan(data->player.ray_angle));
     if(sin(data->player.ray_angle) > 0)
+    {
         data->cords.yb_hor = data->cords.yinterc_hor + CARE;
-    if(cos(data->player.ray_angle) > 0)
-        data->cords.xb_hor = data->cords.xinterc_hor + fabs(CARE / tan(data->player.ray_angle));
-    else
-        data->cords.xb_hor = data->cords.xinterc_hor - fabs(CARE / tan(data->player.ray_angle)) ;
+        data->cords.xb_hor = data->cords.xinterc_hor + (CARE / tan(data->player.ray_angle));
+    }
     if(data->cords.xb_hor >= data->win.map_x)
         data->cords.xb_hor = data->win.map_x - CARE;
     if(data->cords.yb_hor >= data->win.map_y)

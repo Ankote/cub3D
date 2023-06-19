@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 15:39:21 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 14:33:49 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,6 @@ double	check_intersictions(t_data *data)
 		data->ray.xhit = data->cords.xb_ver;
 	}
 	return (ds);
-}
-
-void	draw_rays(t_data *data)
-{
-	int	x;
-
-	x = 0;
-	data->player.ray_angle = data->player.routation_ang - rad(30);
-	if (data->player.routation_ang <= 0.1 && data->player.routation_ang >= 0)
-		data->player.ray_angle = rad(330);
-	while (x < WIN_X)
-	{
-		check_intersictions(data);
-		data->player.ray_angle += rad(60) / WIN_X;
-		x ++;
-	}
 }
 
 void	draw_things(t_data *data)
