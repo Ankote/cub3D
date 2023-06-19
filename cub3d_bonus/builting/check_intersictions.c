@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 14:33:49 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 18:37:05 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ double	check_intersictions(t_data *data)
 	return (ds);
 }
 
+void	draw_rays(t_data *data)
+{
+	int	x;
+
+	x = 0;
+	data->player.ray_angle = data->player.routation_ang - rad(30);
+	if (data->player.routation_ang <= 0.1 && data->player.routation_ang >= 0)
+		data->player.ray_angle = rad(330);
+	while (x < WIN_X)
+	{
+		check_intersictions(data);
+		data->player.ray_angle += rad(60) / WIN_X;
+		x ++;
+	}
+}
+
 void	draw_things(t_data *data)
 {
 	int		x;
@@ -50,15 +66,15 @@ void	draw_things(t_data *data)
 	data->player.ray_angle = data->player.routation_ang - rad(30);
 	if (data->player.routation_ang <= 0.1 && data->player.routation_ang >= 0)
 		data->player.ray_angle = rad(330);
-	data->wall.distanceProjPlane = fabs((WIN_X / 2) / tan(rad(30)));
+	data->wall.distanceprojplane = fabs((WIN_X / 2) / tan(rad(30)));
 	while (x < WIN_X)
 	{
 		ds = check_intersictions(data);
 		do_projection(data, x, ds);
 		data->wall.is_horiz_hit = 0;
 		data->player.ray_angle += rad(60) / WIN_X;
-		if(data->player.ray_angle >= rad(360))
-			data->player.ray_angle  = 0;
+		if (data->player.ray_angle >= rad(360))
+			data->player.ray_angle = 0;
 		x ++;
 	}
 }

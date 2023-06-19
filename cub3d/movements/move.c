@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:32:52 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 13:56:03 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 16:24:41 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int check_move(t_data *data, int x, int y)
         return(0);
     if(data->map->map_copy[(y + MOVE_SPEED) / CARE][(x) / CARE] == '1')
         return (0);
-    if (data->map->map_copy[(y ) / CARE][(x + MOVE_SPEED) / CARE] == '1')
+    if (data->map->map_copy[(y) / CARE][(x + MOVE_SPEED) / CARE] == '1')
+        return (0);
+    if (data->map->map_copy[(y) / CARE][(x) / CARE] == '1')
         return (0);
     return (1);
 }

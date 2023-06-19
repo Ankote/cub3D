@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 16:49:36 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/18 15:38:58 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 11:55:47 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	generate_3d(t_data *data, int x)
 	j = 0;
 	tex = malloc(sizeof(t_img));
 	configure_data(data, tex);
-	while (j < data->wall.topWall)
+	while (j < data->wall.topwall)
 		my_mlx_pixel_put(&data->main_img, x, j++, data->wall.ceiling_color);
-	while (j < data->wall.bottomWall)
+	while (j < data->wall.bottomwall)
 	{
-		distance_center_wall = j + (data->wall.heightWall / 2) - (WIN_Y / 2);
+		distance_center_wall = j + (data->wall.heightwall / 2) - (WIN_Y / 2);
 		correspanding_y_coordinate = (int)(distance_center_wall
-				* (float)tex->height / data->wall.heightWall)
+				* (float)tex->height / data->wall.heightwall)
 			% tex->height;
 		dst = tex->addr + correspanding_y_coordinate * tex->line_length
 			+ data->wall.texture_x * (tex->bits_per_pixel / 8);
@@ -44,13 +44,13 @@ void	generate_3d(t_data *data, int x)
 void	do_projection(t_data *data, int x, double ds)
 {
 	ds = ds * cos(data->player.ray_angle - data->player.routation_ang);
-	data->wall.heightWall = (CARE / ds) * data->wall.distanceProjPlane;
-	data->wall.topWall = ((WIN_Y / 2) - (data->wall.heightWall / 2));
-	if (data->wall.topWall < 0)
-		data->wall.topWall = 0;
-	data->wall.bottomWall = ((WIN_Y / 2) + (data->wall.heightWall / 2));
-	if (data->wall.bottomWall > WIN_Y)
-		data->wall.bottomWall = WIN_Y;
+	data->wall.heightwall = (CARE / ds) * data->wall.distanceprojplane;
+	data->wall.topwall = ((WIN_Y / 2) - (data->wall.heightwall / 2));
+	if (data->wall.topwall < 0)
+		data->wall.topwall = 0;
+	data->wall.bottomwall = ((WIN_Y / 2) + (data->wall.heightwall / 2));
+	if (data->wall.bottomwall > WIN_Y)
+		data->wall.bottomwall = WIN_Y;
 	generate_3d(data, x);
 }
 

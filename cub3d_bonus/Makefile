@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
+#    By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/18 18:09:30 by aankote          ###   ########.fr        #
+#    Updated: 2023/06/19 11:10:42 by rakhsas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJCS = $(FILES:.c=.o)
 INCLUDES = get_next_line/get_next_line.a libft/libft.a
 FRAMEWORK = -lmlx -framework OpenGL -framework AppKit -static-libsan
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 CC = cc
 

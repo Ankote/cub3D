@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 18:58:23 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 19:47:00 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
- #include <fcntl.h>
- #include "stdbool.h"
-
+# include <fcntl.h>
+# include "stdbool.h"
 # define WIN_X 1920
 # define WIN_Y 1080
 # define CARE 64
@@ -43,17 +42,18 @@
 # define YELLOW 0x00FFFF00
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 12
+# define MOVE_SPEED 20
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-	int 	map_x;
+	int		map_x;
 	int		map_y;
 }	t_win;
 
-typedef struct	s_img {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -61,50 +61,50 @@ typedef struct	s_img {
 	int		endian;
 	int		width;
 	int		height;
-}
-			t_img;
-typedef struct  s_player
+}			t_img;
+
+typedef struct s_player
 {
-	double px_pos;
-	double py_pos;
-	double walk_dir;
-	double turn_dir;
-	double rot_dir;
-	double movestep;
-	double routation_ang;
-	double ray_angle;
-} t_player;
+	double	px_pos;
+	double	py_pos;
+	double	walk_dir;
+	double	turn_dir;
+	double	rot_dir;
+	double	movestep;
+	double	routation_ang;
+	double	ray_angle;
+}			t_player;
 
 typedef struct s_cords
 {
-	double xinterc_hor;
-	double yinterc_hor;
-	double xinterc_ver;
-	double yinterc_ver;
-	double xb_hor;
-	double yb_hor;
-	double xb_ver;
-	double yb_ver;
-	double xsteps_hor;
-	double ysteps_ver;
-	double ver_dx;
-	double ver_dy;
-	double hor_dx;
-	double hor_dy;
-} t_cord;
+	double	xinterc_hor;
+	double	yinterc_hor;
+	double	xinterc_ver;
+	double	yinterc_ver;
+	double	xb_hor;
+	double	yb_hor;
+	double	xb_ver;
+	double	yb_ver;
+	double	xsteps_hor;
+	double	ysteps_ver;
+	double	ver_dx;
+	double	ver_dy;
+	double	hor_dx;
+	double	hor_dy;
+}			t_cord;
 
 typedef struct s_wall
 {
-	double	distanceProjPlane;
+	double	distanceprojplane;
 	int		ceiling_color;
 	int		floor_color;
 	int		is_horiz_hit;
 	int		texture_x;
 	int		texture_y;
-	double	heightWall;
-	double	topWall;
-	double	bottomWall;
-}	t_wall;
+	double	heightwall;
+	double	topwall;
+	double	bottomwall;
+}			t_wall;
 
 typedef struct s_ray
 {
@@ -113,17 +113,16 @@ typedef struct s_ray
 	float	distance;
 }	t_ray;
 
-
 typedef struct s_data
 {
-	struct s_map *map;
-	t_win win;
-	t_img img;
-	t_img main_img;
-	t_player player;
-	t_cord cords;
-	t_wall wall;
-	t_ray ray;
+	struct s_map	*map;
+	t_win			win;
+	t_img			img;
+	t_img			main_img;
+	t_player		player;
+	t_cord			cords;
+	t_wall			wall;
+	t_ray			ray;
 }	t_data;
 
 typedef struct s_pl
@@ -164,21 +163,21 @@ typedef struct s_map
 	char			*c;
 	int				final_f;
 	int				final_c;
-	t_pl		*player;
+	t_pl			*player;
 	t_textures		*textures;
 }	t_map;
-
 
 int				ft_exit(void *key);
 int				ft_key_hook(int key, t_data *data);
 
 /***********************Mini Map**************************/
-int				draw_squart(t_data *data ,int x, int y);
+
+int				draw_squart(t_data *data, int x, int y);
 int				draw_lines(t_data *data);
-int 			draw_player(t_data *data);
-void			draw_map(t_data *data);
+int				draw_player(t_data *data);
+void			draw_map(t_data *data, int x, int y);
 void			create_map(t_data *data);
-void 			draw_p_dir(t_data *data);
+void			draw_p_dir(t_data *data);
 
 /***********************movements************************/
 int				move_down(t_data *data);
@@ -188,33 +187,32 @@ int				move_right(t_data *data);
 int				initializ(t_data *data);
 
 /***********************UTILS*****************************/
-int 			create_window(t_win *win, t_data *data);
-void 			get_player_pos(t_data *data);
-void 			draw_ray(t_data *data, double x, double y, int color);
-double 			rad(double deg);
-double 			deg(double rad);
-void 			draw_rays(t_data *data);
+int				create_window(t_win *win, t_data *data);
+void			get_player_pos(t_data *data);
+void			draw_ray(t_data *data, double x, double y, int color);
+double			rad(double deg);
+double			deg(double rad);
+void			draw_rays(t_data *data);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
-int 			is_player(int c);
+int				is_player(int c);
 void			get_dimensions(t_data *data);
-void    angle_adjust(double *ray_angle);
+void			angle_adjust(double *ray_angle);
 /***********************MOVEMENTS***********************/
-int 			update_turn(t_data *data);
-int 			update_walk(t_data *data);
-int 			update_walk_rl(t_data *data);
-int 			get_intercepts_ver(t_data *data);
-double 			check_intersictions(t_data *data);
+int				update_turn(t_data *data);
+int				update_walk(t_data *data);
+int				update_walk_rl(t_data *data);
 
 /***********************CASTING RAYS AND WALLS**********/
 
-int   			hit_ver_wall(t_data *data);
-int   			hit_hor_wall(t_data *data);
-int 			get_intercepts(t_data *data);
-void 			draw_things(t_data *data);
-void 			draw_win();
-void 			draw_sky(t_data *data);
-void 			draw_rays(t_data *data);
-int 			get_second_ver_cord(t_data *data);
+int				hit_ver_wall(t_data *data);
+int				hit_hor_wall(t_data *data);
+void			get_intercepts(t_data *data);
+void			get_intercepts_ver(t_data *data);
+double			check_intersictions(t_data *data);
+void			draw_things(t_data *data);
+void			draw_win(t_data *data);
+void			draw_sky(t_data *data);
+void			draw_rays(t_data *data);
 
 /***********************PARSSING************************/
 
@@ -244,10 +242,11 @@ void			check_for_unwanted_chars(t_map *s_map);
 void			make_the_map_rectangle(t_map *s_map, int max);
 void			get_map(t_map *s_map);
 void			init_sec_part(t_map *s_map);
-void 			draw_floor(t_data *data);
-void 			draw_sky(t_data *data);
+void			draw_floor(t_data *data);
+void			draw_sky(t_data *data);
 void			generate_3d(t_data *data, int x);
 void			do_projection(t_data *data, int x, double ds);
 void			configure_data(t_data *data, t_img *tex);
+int				ft_mouse(int button, int x, int y, t_data *data);
 
-# endif
+#endif

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/18 21:06:36 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/19 19:49:14 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,15 @@ typedef struct s_cords
 
 typedef struct s_wall
 {
-	double	distanceProjPlane;
+	double	distanceprojplane;
 	int		ceiling_color;
 	int		floor_color;
 	int		is_horiz_hit;
 	int		texture_x;
 	int		texture_y;
-	double	heightWall;
-	double	topWall;
-	double	bottomWall;
+	double	heightwall;
+	double	topwall;
+	double	bottomwall;
 }	t_wall;
 
 typedef struct s_ray
@@ -197,14 +197,14 @@ void    		angle_adjust(double *ray_angle);
 int 			update_turn(t_data *data);
 int 			update_walk(t_data *data);
 int 			update_walk_rl(t_data *data);
-int 			get_intercepts_ver(t_data *data);
 double 			check_intersictions(t_data *data);
 
 /***********************CASTING RAYS AND WALLS**********/
 
 int   			hit_ver_wall(t_data *data);
 int   			hit_hor_wall(t_data *data);
-int 			get_intercepts(t_data *data);
+void 			get_intercepts(t_data *data);
+void 			get_intercepts_ver(t_data *data);
 void 			draw_things(t_data *data);
 void 			draw_win();
 void 			draw_sky(t_data *data);
