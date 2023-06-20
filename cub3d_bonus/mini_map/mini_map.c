@@ -6,55 +6,11 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:12:05 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 16:13:31 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:22:09 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	draw_squart(t_data *data, int x, int y)
-{
-	int	x0;
-	int	y0;
-
-	y0 = y;
-	while (y < y0)
-	{
-		x0 = x;
-		while (x0 < x + CARE)
-		{
-			if (data->map->map_copy[y / CARE][x / CARE] == '1')
-				my_mlx_pixel_put(&data->main_img, x0 ++, y, WALL);
-			else if (data->map->map_copy[y / CARE][x / CARE] == '0'
-				|| is_player(data->map->map_copy[y / CARE][x / CARE]))
-				my_mlx_pixel_put(&data->main_img, x0 ++, y, WAY);
-			else
-				x0 ++;
-		}
-		y ++;
-	}
-	return (0);
-}
-
-int	draw_lines(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < data->win.map_y)
-	{
-		x = 0;
-		while (x < data->win.map_x)
-		{
-			if (x % CARE == 0 || y % CARE == 0)
-				my_mlx_pixel_put(&data->main_img, x, y, LINE);
-			x ++;
-		}
-		y ++;
-	}
-	return (0);
-}
 
 int	draw_player(t_data *data)
 {

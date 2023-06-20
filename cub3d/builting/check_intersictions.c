@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_intersictions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:10:35 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 11:55:47 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:10:59 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	draw_things(t_data *data)
 		do_projection(data, x, ds);
 		data->wall.is_horiz_hit = 0;
 		data->player.ray_angle += rad(60) / WIN_X;
-		if(data->player.ray_angle >= rad(360))
-			data->player.ray_angle  = 0;
+		if (data->player.ray_angle >= rad(360))
+			data->player.ray_angle = 0;
 		x ++;
 	}
 }

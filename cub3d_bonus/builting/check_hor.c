@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 19:36:27 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:19:00 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	check_hit_hor(char **map, int x_cor, int y_cor)
 
 	x = x_cor / CARE;
 	y = y_cor / CARE;
-	if (y == 14)
-		while (0)
-			;
 	if (map[y][x] == '1' || map[y - 1][x] == '1')
 		return (0);
 	if (map[y][x] == ' ' || map[y - 1][x] == ' ')
@@ -50,13 +47,13 @@ int	hit_hor_wall(t_data *data)
 {
 	int	y_step;
 
-    get_intercepts(data);
-    data->cords.xsteps_hor = CARE / fabs(tan(data->player.ray_angle));
-    if(cos(data->player.ray_angle) < 0)
-        data->cords.xsteps_hor = -CARE / fabs(tan(data->player.ray_angle));
+	get_intercepts(data);
+	data->cords.xsteps_hor = CARE / fabs(tan(data->player.ray_angle));
+	if (cos(data->player.ray_angle) < 0)
+		data->cords.xsteps_hor = -CARE / fabs(tan(data->player.ray_angle));
 	y_step = CARE;
-	if (sin(data->player.ray_angle) <= 0)
-		y_step = -CARE ;
+	if (sin (data->player.ray_angle) <= 0)
+		y_step = -CARE;
 	while (1)
 	{
 		if (data->cords.xb_hor >= data->win.map_x)

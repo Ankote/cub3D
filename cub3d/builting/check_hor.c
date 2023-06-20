@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:31:04 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 19:48:45 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:09:25 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	hit_hor_wall(t_data *data)
 {
 	int	y_step;
 
-    get_intercepts(data);
-    data->cords.xsteps_hor = CARE / fabs(tan(data->player.ray_angle));
-    if(cos(data->player.ray_angle) < 0)
-        data->cords.xsteps_hor = -CARE / fabs(tan(data->player.ray_angle));
+	get_intercepts(data);
+	data->cords.xsteps_hor = CARE / fabs(tan(data->player.ray_angle));
+	if (cos (data->player.ray_angle) < 0)
+		data->cords.xsteps_hor = -CARE / fabs(tan(data->player.ray_angle));
 	y_step = CARE;
 	if (sin(data->player.ray_angle) <= 0)
 		y_step = -CARE ;

@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/19 19:47:00 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:42:13 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "stdbool.h"
-# define WIN_X 1920
-# define WIN_Y 1080
+# define WIN_X 1200
+# define WIN_Y 800
 # define CARE 64
 # define P_SIZE 4
 # define MAP_X 300
@@ -42,7 +42,7 @@
 # define YELLOW 0x00FFFF00
 /**********MATH****************************/
 # define PI 3.14159265359
-# define MOVE_SPEED 20
+# define MOVE_SPEED 12
 
 typedef struct s_mlx
 {

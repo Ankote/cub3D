@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:21:18 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/17 10:40:05 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:38:02 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	get_map(t_map *s_map)
 		i++;
 	}
 }
+
 void	check_textures(t_map *s_map)
 {
 	check_for_textures_extension(s_map);
@@ -66,5 +67,4 @@ void	parse_first_part(t_map *s_map, int fd)
 	init_sec_part(s_map);
 	get_map(s_map);
 	make_the_map_rectangle(s_map, get_max_len(s_map));
-
 }

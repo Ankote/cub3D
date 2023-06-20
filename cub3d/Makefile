@@ -6,7 +6,7 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/18 21:05:15 by aankote          ###   ########.fr        #
+#    Updated: 2023/06/20 10:38:18 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,7 @@ fclean : clean
 	@echo "\nDeleting executable..."
 	rm -fr $(NAME)
 
-re : fclean bonus
-
-run : all clean
+re : fclean all
 
 push : fclean
 	git add .
