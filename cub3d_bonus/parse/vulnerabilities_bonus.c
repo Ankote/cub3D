@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vulnerabilities.c                                  :+:      :+:    :+:   */
+/*   vulnerabilities_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:21:38 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/12 11:08:40 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:57:55 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 int	ft_check_left_bottom(t_map *s_map, int i, int j, int action)
 {

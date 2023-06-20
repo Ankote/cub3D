@@ -6,7 +6,7 @@
 /*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/20 10:10:51 by aankote          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:58:56 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <fcntl.h>
 # include "stdbool.h"
 
-# define WIN_X 1920
-# define WIN_Y 1080
+# define WIN_X 1200
+# define WIN_Y 800
 # define CARE 64
 # define P_SIZE 4
 # define MAP_X 300

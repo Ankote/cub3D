@@ -6,17 +6,20 @@
 #    By: aankote <aankote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/20 10:39:05 by aankote          ###   ########.fr        #
+#    Updated: 2023/06/20 10:56:48 by aankote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D_bonus
 
-FILES = cub3d.c events.c movements/move.c \
-		builting/draw.c builting/draw_utils0.c builting/draw_utils01.c builting/draw_utils02.c \
-		builting/check_hor.c builting/check_ver.c builting/check_intersictions.c window/main_window.c \
-		parse/parse.c parse/extensions.c parse/checks.c parse/textures.c parse/checks1.c\
-		parse/vulnerabilities.c builting/textures.c mini_map/mini_map.c
+FILES = cub3d_bonus.c events_bonus.c movements/move_bonus.c \
+		builting/draw_bonus.c builting/draw_utils0_bonus.c\
+		 builting/draw_utils01_bonus.c builting/draw_utils02_bonus.c \
+		builting/check_hor_bonus.c builting/check_ver_bonus.c\
+		 builting/check_intersictions_bonus.c window/main_window_bonus.c \
+		parse/parse_bonus.c parse/extensions_bonus.c \
+		parse/checks_bonus.c parse/textures_bonus.c parse/checks1_bonus.c\
+		parse/vulnerabilities_bonus.c builting/textures_bonus.c mini_map/mini_map_bonus.c
 
 OBJCS = $(FILES:.c=.o)
 
