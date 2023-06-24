@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/20 10:58:56 by aankote          ###   ########.fr       */
+/*   Created: 2023/06/20 11:11:34 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/06/20 11:11:42 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
+# include "libft/libft.h"
+# include "stdbool.h"
+# include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include "stdbool.h"
 
 # define WIN_X 1200
 # define WIN_Y 800
@@ -54,7 +54,8 @@ typedef struct s_mlx
 	int				map_y;
 }					t_win;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void			*img;
 	char			*addr;
 	int				bits_per_pixel;
@@ -116,15 +117,15 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	struct s_map		*map;
-	t_win				win;
-	t_img				img;
-	t_img				main_img;
-	t_player			player;
-	t_cord				cords;
-	t_wall				wall;
-	t_ray				ray;
-}						t_data;
+	struct s_map	*map;
+	t_win			win;
+	t_img			img;
+	t_img			main_img;
+	t_player		player;
+	t_cord			cords;
+	t_wall			wall;
+	t_ray			ray;
+}					t_data;
 
 typedef struct s_pl
 {
@@ -144,7 +145,7 @@ typedef struct s_textures
 	t_img			*ea_img;
 	t_img			*we_img;
 	char			**no_map;
-}	t_textures;
+}					t_textures;
 
 typedef struct s_map
 {
@@ -166,7 +167,7 @@ typedef struct s_map
 	int				final_c;
 	t_pl			*player;
 	t_textures		*textures;
-}	t_map;
+}					t_map;
 
 int					ft_exit(void *key);
 int					ft_key_hook(int key, t_data *data);
@@ -227,7 +228,7 @@ void				parse_first_part(t_map *s_map, int fd);
 void				check_for_textures_extension(t_map *s_map);
 void				check_for_textures_path(t_map *s_map);
 char				*test(char *str);
-void				check_for_max_255(char	*str, int *c_p);
+void				check_for_max_255(char *str, int *c_p);
 void				check_border_top(t_map *s_map);
 void				make_the_map_rectangle(t_map *s_map, int max);
 void				check_if_spaces(t_map *s_map);
@@ -244,4 +245,4 @@ void				generate_3d(t_data *data, int x);
 void				do_projection(t_data *data, int x, double ds);
 void				configure_data(t_data *data, t_img *tex);
 
-#					endif
+#endif
